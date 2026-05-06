@@ -47,6 +47,7 @@
         @media (max-width: 768px) { .breakdown-grid { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
         @media print { body { background: white; } .nav { display: none; } }
     </style>
+    <script src="config.js"></script>
 </head>
 <body>
     <div class="container">
@@ -62,19 +63,19 @@
             <div class="price-box">
                 <div class="price-line">
                     <span>Разработка (120 часов × $15/час):</span>
-                    <span>$1,800</span>
+                    <span data-price="development">$1,800</span>
                 </div>
                 <div class="price-line">
                     <span>CloudMax (для разработки без лимитов):</span>
-                    <span>$100</span>
+                    <span data-price="cloudmax">$100</span>
                 </div>
                 <div class="price-line">
                     <span>Инфраструктура (месяц 1):</span>
-                    <span>$119</span>
+                    <span data-price="monthly">$119</span>
                 </div>
                 <div class="price-line">
                     <span>МЕСЯЦ 1 ИТОГО:</span>
-                    <span>$2,019</span>
+                    <span data-price="month1">$2,019</span>
                 </div>
             </div>
 
@@ -82,27 +83,27 @@
             <div class="price-box">
                 <div class="price-line">
                     <span>Render.com (Node.js + PostgreSQL):</span>
-                    <span>$12</span>
+                    <span>$<span class="infra-render">12</span></span>
                 </div>
                 <div class="price-line">
                     <span>Claude 3.5 Sonnet API (100-150 алертов/день):</span>
-                    <span>$81</span>
+                    <span>$<span class="infra-claude">81</span></span>
                 </div>
                 <div class="price-line">
                     <span>RSS мониторинг (50+ источников):</span>
-                    <span>$15</span>
+                    <span>$<span class="infra-rss">15</span></span>
                 </div>
                 <div class="price-line">
                     <span>Мониторинг & uptime:</span>
-                    <span>$10</span>
+                    <span>$<span class="infra-monitoring">10</span></span>
                 </div>
                 <div class="price-line">
                     <span>Домен и сертификаты:</span>
-                    <span>$1</span>
+                    <span>$<span class="infra-domain">1</span></span>
                 </div>
                 <div class="price-line">
                     <span>ЕЖЕМЕСЯЧНО:</span>
-                    <span>$119</span>
+                    <span data-price="monthly">$119</span>
                 </div>
             </div>
 
@@ -115,22 +116,22 @@
                 </tr>
                 <tr>
                     <td>Месяц 1</td>
-                    <td class="amount">$2,019</td>
+                    <td class="amount" data-price="month1">$2,019</td>
                     <td>Разработка + CloudMax + хостинг</td>
                 </tr>
                 <tr>
                     <td>Месяцы 2-12</td>
-                    <td class="amount">$119 × 11 = $1,309</td>
+                    <td class="amount"><span data-price="monthly">$119</span> × 11 = $1,309</td>
                     <td>Хостинг и API только</td>
                 </tr>
                 <tr>
                     <td><strong>ГОД 1 ИТОГО</strong></td>
-                    <td class="amount"><strong>$3,328</strong></td>
+                    <td class="amount"><strong data-price="year1">$3,328</strong></td>
                     <td>Всё включено</td>
                 </tr>
                 <tr>
                     <td>Среднее в месяц</td>
-                    <td class="amount">$277</td>
+                    <td class="amount" data-price="avg_monthly">$277</td>
                     <td>За 12 месяцев</td>
                 </tr>
             </table>
@@ -144,7 +145,7 @@
                     <th>Что это включает</th>
                 </tr>
                 <tr style="background: #fff8f0;">
-                    <td colspan="4"><strong>РАЗРАБОТКА И РАЗВОРАЧИВАНИЕ (120 часов × $15 = $1,800)</strong></td>
+                    <td colspan="4"><strong>РАЗРАБОТКА И РАЗВОРАЧИВАНИЕ (120 часов × $15 = <span data-price="development">$1,800</span>)</strong></td>
                 </tr>
                 <tr>
                     <td>Интеграция Slack</td>
@@ -197,7 +198,7 @@
                     <td>Для разработки без ограничений на токены</td>
                 </tr>
                 <tr style="background: #fff8f0;">
-                    <td colspan="3"><strong>ИНФРАСТРУКТУРА МЕСЯЦ 1 ($119)</strong></td>
+                    <td colspan="3"><strong>ИНФРАСТРУКТУРА МЕСЯЦ 1 (<span data-price="monthly">$119</span>)</strong></td>
                 </tr>
                 <tr>
                     <td>Render.com (Node.js + PostgreSQL)</td>
@@ -226,13 +227,13 @@
                 </tr>
                 <tr style="background: #e8f2ff;">
                     <td><strong>Инфраструктура — итого</strong></td>
-                    <td class="amount"><strong>$119</strong></td>
+                    <td class="amount"><strong data-price="monthly">$119</strong></td>
                     <td></td>
                 </tr>
                 <tr style="background: #f0fdf4; font-weight: bold;">
                     <td>МЕСЯЦ 1 ПОЛНАЯ СТОИМОСТЬ</td>
-                    <td class="amount" style="font-size: 1.2em;">$937</td>
-                    <td>Разработка ($718) + CloudMax ($100) + Инфра ($119)</td>
+                    <td class="amount" style="font-size: 1.2em;" data-price="month1">$2,019</td>
+                    <td>Разработка ($1,800) + CloudMax ($100) + Инфра ($119)</td>
                 </tr>
             </table>
 

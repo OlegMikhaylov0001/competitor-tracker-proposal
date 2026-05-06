@@ -50,6 +50,7 @@
         @media (max-width: 768px) { .comparison, .timeline, .grid-2 { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
         @media print { body { background: white; } .nav { display: none; } }
     </style>
+    <script src="config.js"></script>
 </head>
 <body>
     <div class="container">
@@ -103,19 +104,19 @@
             <div class="price-box">
                 <div class="price-line">
                     <span>Разработка (120 ч × $15/ч):</span>
-                    <span>$1,800</span>
+                    <span data-price="development">$1,800</span>
                 </div>
                 <div class="price-line">
                     <span>CloudMax (для разработки без лимитов):</span>
-                    <span>$100</span>
+                    <span data-price="cloudmax">$100</span>
                 </div>
                 <div class="price-line">
                     <span>Инфраструктура (месяц 1):</span>
-                    <span>$119</span>
+                    <span data-price="monthly">$119</span>
                 </div>
                 <div class="price-line">
                     <span>МЕСЯЦ 1 ИТОГО:</span>
-                    <span>$2,019</span>
+                    <span data-price="month1">$2,019</span>
                 </div>
             </div>
 
@@ -127,12 +128,12 @@
                 </tr>
                 <tr>
                     <td>Месяцы 2-12</td>
-                    <td>$119/месяц</td>
+                    <td><span data-price="monthly">$119</span>/месяц</td>
                     <td>Render.com хостинг, Claude API, мониторинг</td>
                 </tr>
                 <tr>
                     <td><strong>ГОД 1 ИТОГО</strong></td>
-                    <td><strong>$3,328</strong></td>
+                    <td><strong data-price="year1">$3,328</strong></td>
                     <td>Месяц 1 ($2,019) + Месяцы 2-12 ($119 × 11 = $1,309)</td>
                 </tr>
             </table>

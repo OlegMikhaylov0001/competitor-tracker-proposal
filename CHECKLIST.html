@@ -48,6 +48,7 @@
         @media (max-width: 768px) { .timeline { grid-template-columns: repeat(3, 1fr); } header h1 { font-size: 2em; } }
         @media print { body { background: white; } .nav, .checkbox { display: none; } }
     </style>
+    <script src="config.js"></script>
 </head>
 <body>
     <div class="container">
@@ -95,9 +96,9 @@
             <div class="section-box">
                 <h4>Инвестиция и ROI</h4>
                 <ul>
-                    <li><strong>Месяц 1:</strong> $2,019 (разработка $1,800 + CloudMax $100 + хостинг $119)</li>
-                    <li><strong>Ежемесячно после:</strong> $119 (Render.com + Claude API + мониторинг)</li>
-                    <li><strong>Год 1:</strong> $3,328 (месяц 1: $2,019 + месяцы 2-12: $119×11=$1,309)</li>
+                    <li><strong>Месяц 1:</strong> <span data-price="month1">$2,019</span> (разработка <span data-price="development">$1,800</span> + CloudMax <span data-price="cloudmax">$100</span> + хостинг <span data-price="monthly">$119</span>)</li>
+                    <li><strong>Ежемесячно после:</strong> <span data-price="monthly">$119</span> (Render.com + Claude API + мониторинг)</li>
+                    <li><strong>Год 1:</strong> <span data-price="year1">$3,328</span> (месяц 1: <span data-price="month1">$2,019</span> + месяцы 2-12: <span data-price="monthly">$119</span>×11=$1,309)</li>
                     <li><strong>Окупаемость:</strong> 2-3 месяца</li>
                     <li><strong>Контракт:</strong> Только ежемесячный, можно отменить</li>
                 </ul>
@@ -127,7 +128,7 @@
 
             <h3>Вопрос 1: Одобрить ли стоимость?</h3>
             <div class="decision-box">
-                <h4>☐ ДА - Месяц 1: $2,019, затем $119/месяц</h4>
+                <h4>☐ ДА - Месяц 1: <span data-price="month1">$2,019</span>, затем <span data-price="monthly">$119</span>/месяц</h4>
                 <h4>☐ НЕТ - Требуется обсуждение (укажите почему)</h4>
                 <input type="text" placeholder="Причины для обсуждения...">
             </div>

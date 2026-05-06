@@ -41,6 +41,7 @@
         @media (max-width: 768px) { .competitors-grid, .events-grid, .timeline { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
         @media print { body { background: white; } .nav { display: none; } }
     </style>
+    <script src="config.js"></script>
 </head>
 <body>
     <div class="container">
@@ -218,17 +219,17 @@
                 </tr>
                 <tr>
                     <td><strong>Месяц 1</strong></td>
-                    <td><strong>$2,019</strong></td>
-                    <td>Разработка ($718) + CloudMax ($100) + хостинг ($119)</td>
+                    <td><strong data-price="month1">$2,019</strong></td>
+                    <td>Разработка (<span data-price="development">$1,800</span>) + CloudMax (<span data-price="cloudmax">$100</span>) + хостинг (<span data-price="monthly">$119</span>)</td>
                 </tr>
                 <tr>
                     <td><strong>Месяцы 2+</strong></td>
-                    <td><strong>$119/месяц</strong></td>
+                    <td><strong><span data-price="monthly">$119</span>/месяц</strong></td>
                     <td>Render.com (Node.js+PostgreSQL) + Claude API + мониторинг</td>
                 </tr>
                 <tr>
                     <td><strong>ГОД 1</strong></td>
-                    <td><strong>$2,246</strong></td>
+                    <td><strong data-price="year1">$3,328</strong></td>
                     <td>Полная реализация и 12 месяцев операции</td>
                 </tr>
             </table>
