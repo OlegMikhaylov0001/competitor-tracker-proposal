@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Tracker MVP - Пакет предложения</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        h2 {
+            color: #2563eb;
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .document-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .document-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .document-card h3 {
+            color: #2563eb;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .document-number {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .doc-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        .doc-meta-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .doc-meta-item strong {
+            color: #2563eb;
+            margin-right: 5px;
+        }
+
+        .doc-description {
+            color: #666;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        .doc-includes {
+            background: white;
+            padding: 15px;
+            border-left: 4px solid #2563eb;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .doc-includes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .doc-includes li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .doc-includes li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .key-numbers {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .key-numbers h3 {
+            color: #2563eb;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .number-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #2563eb;
+        }
+
+        .number-box-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+
+        .number-box-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .reading-path {
+            background: #f0fdf4;
+            border: 2px solid #16a34a;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .reading-path h3 {
+            color: #16a34a;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .path-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #16a34a;
+        }
+
+        .path-item strong {
+            color: #16a34a;
+        }
+
+        .path-item p {
+            margin-top: 5px;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .documents-grid, .numbers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .document-card:hover {
+                border-color: #e0e0e0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Competitor Tracker MVP</h1>
+            <p>Пакет предложения для inDrive</p>
+        </header>
+
+        <div class="content">
+            <!-- KEY NUMBERS -->
+            <div class="key-numbers">
+                <h3>💡 Ключевые числа</h3>
+                <div class="numbers-grid">
+                    <div class="number-box">
+                        <div class="number-box-value">$937</div>
+                        <div class="number-box-label">Месяц 1</div>
+                    </div>
+                    <div class="number-box">
+                        <div class="number-box-value">$119</div>
+                        <div class="number-box-label">Ежемесячно</div>
+                    </div>
+                    <div class="number-box">
+                        <div class="number-box-value">3 недели</div>
+                        <div class="number-box-label">До запуска</div>
+                    </div>
+                    <div class="number-box">
+                        <div class="number-box-value">12</div>
+                        <div class="number-box-label">Конкурентов</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECOMMENDED READING PATH -->
+            <div class="reading-path">
+                <h3>🎯 Рекомендуемый порядок чтения</h3>
+
+                <div class="path-item">
+                    <strong>Для руководителя (5 минут):</strong>
+                    <p>1. Краткое резюме → 2. Стоимость → Решение</p>
+                </div>
+
+                <div class="path-item">
+                    <strong>Для финансового отдела (15 минут):</strong>
+                    <p>1. Стоимость → Примеры счётов → Одобрение бюджета</p>
+                </div>
+
+                <div class="path-item">
+                    <strong>Для технической команды (30 минут):</strong>
+                    <p>1. Полное предложение → Архитектура → Расчет токенов Claude</p>
+                </div>
+
+                <div class="path-item">
+                    <strong>Для project manager (25 минут):</strong>
+                    <p>1. Чеклист → Расписание → План внутреннего обсуждения</p>
+                </div>
+            </div>
+
+            <!-- DOCUMENTS -->
+            <h2>📄 Документы в пакете</h2>
+
+            <div class="documents-grid">
+                <!-- DOC 1 -->
+                <a href="EXECUTIVE_SUMMARY.html" class="document-card">
+                    <div class="document-number">1</div>
+                    <h3>Краткое резюме</h3>
+                    <div class="doc-meta">
+                        <div class="doc-meta-item">
+                            <strong>⏱️</strong> 2-3 минуты
+                        </div>
+                        <div class="doc-meta-item">
+                            <strong>👥</strong> Руководители
+                        </div>
+                    </div>
+                    <div class="doc-description">
+                        Быстрый обзор проблемы, решения, цены и расписания. Все самое важное на 1-2 страницах.
+                    </div>
+                    <div class="doc-includes">
+                        <ul>
+                            <li>Проблема vs Решение</li>
+                            <li>Цена $937 месяц 1 + $119/месяц</li>
+                            <li>График 3 недели</li>
+                            <li>Пример алерта</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- DOC 2 -->
+                <a href="PRICING.html" class="document-card">
+                    <div class="document-number">2</div>
+                    <h3>Стоимость</h3>
+                    <div class="doc-meta">
+                        <div class="doc-meta-item">
+                            <strong>⏱️</strong> 10 минут
+                        </div>
+                        <div class="doc-meta-item">
+                            <strong>💰</strong> Финансы
+                        </div>
+                    </div>
+                    <div class="doc-description">
+                        Полное объяснение что входит в разработку и ежемесячные расходы. Render.com инфраструктура, CloudMax для разработки, Claude API.
+                    </div>
+                    <div class="doc-includes">
+                        <ul>
+                            <li>Breakdown разработки ($818)</li>
+                            <li>Breakdown инфраструктуры ($119)</li>
+                            <li>Render.com + PostgreSQL</li>
+                            <li>Примеры счётов</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- DOC 3 -->
+                <a href="PROPOSAL.html" class="document-card">
+                    <div class="document-number">3</div>
+                    <h3>Полное предложение</h3>
+                    <div class="doc-meta">
+                        <div class="doc-meta-item">
+                            <strong>⏱️</strong> 25 минут
+                        </div>
+                        <div class="doc-meta-item">
+                            <strong>🔧</strong> Техническое
+                        </div>
+                    </div>
+                    <div class="doc-description">
+                        Детальное описание как работает система, архитектура, Claude 3.5 Sonnet API, расчет токенов, расписание разработки.
+                    </div>
+                    <div class="doc-includes">
+                        <ul>
+                            <li>Как это работает</li>
+                            <li>Архитектура системы</li>
+                            <li>Claude 3.5 Sonnet и расчет токенов</li>
+                            <li>План по неделям</li>
+                        </ul>
+                    </div>
+                </a>
+
+                <!-- DOC 4 -->
+                <a href="CHECKLIST.html" class="document-card">
+                    <div class="document-number">4</div>
+                    <h3>Чеклист для клиента</h3>
+                    <div class="doc-meta">
+                        <div class="doc-meta-item">
+                            <strong>⏱️</strong> 15 минут
+                        </div>
+                        <div class="doc-meta-item">
+                            <strong>✅</strong> Решение
+                        </div>
+                    </div>
+                    <div class="doc-description">
+                        Маршрут для клиента: как читать документы, что одобрить, чек-лист перед подписанием контракта, следующие шаги.
+                    </div>
+                    <div class="doc-includes">
+                        <ul>
+                            <li>Порядок чтения документов</li>
+                            <li>Pre-approval чеклист</li>
+                            <li>Как двигаться дальше</li>
+                            <li>Расписание разработки</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <h2>🚀 Быстрые действия</h2>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 30px;">
+                <p style="margin-bottom: 15px;">Выберите, что вы хотите сделать:</p>
+                <a href="EXECUTIVE_SUMMARY.html" class="cta-button">Начать с резюме (5 мин)</a>
+                <a href="PRICING.html" class="cta-button">Посмотреть стоимость (10 мин)</a>
+                <a href="PROPOSAL.html" class="cta-button">Полное предложение (25 мин)</a>
+                <a href="CHECKLIST.html" class="cta-button">Маршрут клиента (15 мин)</a>
+            </div>
+
+            <!-- INFO BOXES -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+                <div style="background: #f0f9ff; border: 2px solid #2563eb; border-radius: 10px; padding: 20px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">📋 Технология</h4>
+                    <p style="font-size: 0.95em; color: #666;">Claude 3.5 Sonnet API для анализа. Render.com для инфраструктуры. Оптимально по цене и производительности.</p>
+                </div>
+                <div style="background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 20px;">
+                    <h4 style="color: #16a34a; margin-bottom: 10px;">✅ Готовность</h4>
+                    <p style="font-size: 0.95em; color: #666;">Все 4 документа готовы. Вы можете открыть любой, распечатать, отправить клиенту.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Competitor Tracker MVP</strong> | Пакет предложения</p>
+            <p style="font-size: 0.95em; color: #aaa;">Действительно до 5 июня 2026</p>
+        </div>
+    </div>
+</body>
+</html>

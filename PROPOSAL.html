@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полное предложение - Competitor Tracker MVP</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 0; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+        header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 60px 40px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .content { padding: 40px; }
+        h2 { color: #2563eb; font-size: 1.8em; margin: 30px 0 20px 0; border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
+        h3 { color: #1e40af; font-size: 1.3em; margin: 20px 0 15px 0; }
+        .box { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 15px 0; border-radius: 4px; }
+        .box strong { color: #2563eb; }
+        .competitors-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .competitor-item { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 15px; border-radius: 4px; }
+        .competitor-item h4 { color: #2563eb; margin-bottom: 8px; }
+        .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0; }
+        .event-item { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 15px; border-radius: 4px; }
+        .event-item strong { color: #2563eb; display: block; margin-bottom: 5px; }
+        .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 25px 0; }
+        .timeline-item { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; border-radius: 4px; }
+        .timeline-item strong { color: #2563eb; display: block; margin-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #2563eb; color: white; padding: 12px; text-align: left; }
+        table td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+        table tr:nth-child(even) { background: #f9fafb; }
+        .faq { margin: 20px 0; }
+        .faq-item { background: #f9fafb; padding: 15px; margin-bottom: 12px; border-radius: 4px; border-left: 4px solid #2563eb; }
+        .faq-item strong { color: #2563eb; }
+        .nav { background: #f0f9ff; padding: 20px; margin: 30px 0 0 0; text-align: center; border-top: 2px solid #2563eb; }
+        .nav a { display: inline-block; margin: 0 10px; padding: 10px 20px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; }
+        .nav a:hover { background: #1e40af; }
+        footer { background: #1e293b; color: white; padding: 25px 40px; text-align: center; }
+        .highlight { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 4px; margin: 25px 0; }
+        ul { margin-left: 20px; }
+        ol { margin-left: 20px; }
+        @media (max-width: 768px) { .competitors-grid, .events-grid, .timeline { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
+        @media print { body { background: white; } .nav { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Полное предложение</h1>
+            <p>Детальное описание системы Competitor Tracker MVP</p>
+        </header>
+
+        <div class="content">
+            <h2>📋 Краткое резюме</h2>
+            <div class="box">
+                <strong>ПРОБЛЕМА:</strong> Ваша команда мониторит конкурентов вручную, что приводит к задержкам, пропускам и несогласованности данных.<br><br>
+                <strong>РЕШЕНИЕ:</strong> Система автоматического мониторинга 24/7 на Claude 3.5 Sonnet, которая отправляет алерты в Slack за 2-5 минут с AI анализом и рекомендациями.
+            </div>
+
+            <h2>🎬 Как это работает</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>1. Новость</strong>
+                    <p>Конкурент делает анонс на TechCrunch, Reuters и т.д.</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>2. Обнаружение</strong>
+                    <p>Система отслеживает 50+ источников 24/7</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>3. Claude анализ</strong>
+                    <p>AI понимает что это значит для вас</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>4. Алерт</strong>
+                    <p>Slack уведомление с рекомендациями</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>5. История</strong>
+                    <p>Сохранено в панели для анализа</p>
+                </div>
+            </div>
+
+            <h2>🌍 Что мы мониторим</h2>
+
+            <h3>12 конкурентов в 4 регионах</h3>
+            <div class="competitors-grid">
+                <div class="competitor-item">
+                    <h4>🇧🇷 ЛАТАМ</h4>
+                    <p>Uber, DiDi, Cabify, 99</p>
+                </div>
+                <div class="competitor-item">
+                    <h4>🇵🇭 ЮВА</h4>
+                    <p>Grab, Gojek, Maxim, Bolt</p>
+                </div>
+                <div class="competitor-item">
+                    <h4>🇪🇬 Африка/МЕА</h4>
+                    <p>Bolt, Uber, Careem, Yassir, Heetch</p>
+                </div>
+                <div class="competitor-item">
+                    <h4>🇷🇺 СНГ</h4>
+                    <p>Yandex Go, Bolt, Maxim</p>
+                </div>
+            </div>
+
+            <h3>8 типов событий</h3>
+            <div class="events-grid">
+                <div class="event-item">
+                    <strong>🏙️ Расширение на рынки</strong>
+                    <p>Новые города и регионы</p>
+                </div>
+                <div class="event-item">
+                    <strong>📢 Кампании</strong>
+                    <p>Маркетинг инициативы</p>
+                </div>
+                <div class="event-item">
+                    <strong>💰 Цены</strong>
+                    <p>Изменения в ценообразовании</p>
+                </div>
+                <div class="event-item">
+                    <strong>⚙️ Функции</strong>
+                    <p>Новые функции продукта</p>
+                </div>
+                <div class="event-item">
+                    <strong>🤝 Партнёрства</strong>
+                    <p>Стратегические союзы</p>
+                </div>
+                <div class="event-item">
+                    <strong>📋 Нормативы</strong>
+                    <p>Нормативные новости</p>
+                </div>
+                <div class="event-item">
+                    <strong>💵 Финансирование</strong>
+                    <p>Раунды инвестиций</p>
+                </div>
+                <div class="event-item">
+                    <strong>👥 Водители</strong>
+                    <p>Операции с водителями</p>
+                </div>
+            </div>
+
+            <h2>🏗️ Архитектура системы</h2>
+            <div class="box">
+                <strong>Слой 1: Источники новостей</strong><br>
+                50+ новостных сайтов (TechCrunch, Reuters, Bloomberg, локальные издания)<br><br>
+
+                <strong>Слой 2: RSS мониторинг</strong><br>
+                Система проверяет ленты каждые 30 минут, отслеживает новые публикации<br><br>
+
+                <strong>Слой 3: Claude 3.5 Sonnet анализ</strong><br>
+                • Определяет конкурента из списка<br>
+                • Определяет тип события (8 категорий)<br>
+                • Оценивает приоритет (1-5)<br>
+                • Генерирует рекомендации<br><br>
+
+                <strong>Слой 4: PostgreSQL База данных (на Render.com)</strong><br>
+                Хранит все алерты с историей, индексирует для поиска<br><br>
+
+                <strong>Слой 5: Вывод в Slack</strong><br>
+                Отправляет структурированные уведомления в реальном времени
+            </div>
+
+            <h2>🤖 Технология: Claude 3.5 Sonnet</h2>
+            <div class="box">
+                <strong>Почему Claude 3.5 Sonnet?</strong><br>
+                • Отличное качество анализа за оптимальную цену<br>
+                • Быстрая обработка (2-5 минут на алерт)<br>
+                • Хорошо понимает стратегический контекст рынков<br>
+                • Генерирует качественные рекомендации<br>
+                • $81/месяц за 100-150 алертов/день<br><br>
+
+                <strong>Как считаются расходы?</strong><br>
+                Каждый алерт требует обработки ~700 токенов (input + output). При 100-150 алертах/день это ~$80-90/месяц Claude API.
+            </div>
+
+            <h2>🌐 Инфраструктура: Render.com</h2>
+            <div class="box">
+                <strong>Почему Render.com?</strong><br>
+                • PostgreSQL БД включена в план хостинга (экономия $25/месяц)<br>
+                • Простая развёртка Node.js приложения<br>
+                • Автоматическое восстановление при сбое<br>
+                • Git интеграция (автоматическое обновление при push)<br>
+                • Встроенные логи, метрики, мониторинг<br>
+                • 99.9% uptime гарантия<br>
+                • Total: $12/месяц (вместо $20+ на других платформах)
+            </div>
+
+            <h2>⏱️ Расписание разработки (3 недели)</h2>
+
+            <h3>Неделя 1: Подготовка</h3>
+            <div class="box">
+                <strong>День 1-2:</strong> Render.com проект, PostgreSQL база<br>
+                <strong>День 3:</strong> Slack интеграция и вебхуки<br>
+                <strong>День 4-5:</strong> RSS мониторинг, подключение 50+ источников<br>
+                <strong>Результат:</strong> Инфраструктура готова
+            </div>
+
+            <h3>Неделя 2: Разработка</h3>
+            <div class="box">
+                <strong>День 1-3:</strong> Claude 3.5 Sonnet интеграция, логика анализа, приоритизация<br>
+                <strong>День 4-5:</strong> Тестирование на реальных данных конкурентов<br>
+                <strong>Результат:</strong> Система работает, алерты приходят в Slack
+            </div>
+
+            <h3>Неделя 3: Запуск</h3>
+            <div class="box">
+                <strong>День 1-2:</strong> Обучение вашей команды<br>
+                <strong>День 3-4:</strong> Финальные настройки<br>
+                <strong>День 5:</strong> Система LIVE!<br>
+                <strong>Результат:</strong> Ваша команда получает первые алерты о конкурентах
+            </div>
+
+            <h2>📊 Стоимость</h2>
+            <table>
+                <tr>
+                    <th>Период</th>
+                    <th>Стоимость</th>
+                    <th>Что включает</th>
+                </tr>
+                <tr>
+                    <td><strong>Месяц 1</strong></td>
+                    <td><strong>$937</strong></td>
+                    <td>Разработка ($718) + CloudMax ($100) + хостинг ($119)</td>
+                </tr>
+                <tr>
+                    <td><strong>Месяцы 2+</strong></td>
+                    <td><strong>$119/месяц</strong></td>
+                    <td>Render.com (Node.js+PostgreSQL) + Claude API + мониторинг</td>
+                </tr>
+                <tr>
+                    <td><strong>ГОД 1</strong></td>
+                    <td><strong>$2,246</strong></td>
+                    <td>Полная реализация и 12 месяцев операции</td>
+                </tr>
+            </table>
+
+            <h2>✅ Ценность для бизнеса</h2>
+            <table>
+                <tr>
+                    <th>Преимущество</th>
+                    <th>Текущее состояние</th>
+                    <th>С нашей системой</th>
+                </tr>
+                <tr>
+                    <td><strong>Скорость</strong></td>
+                    <td>Дни</td>
+                    <td>2-5 минут</td>
+                </tr>
+                <tr>
+                    <td><strong>Охват</strong></td>
+                    <td>Нерегулярно</td>
+                    <td>24/7 мониторинг</td>
+                </tr>
+                <tr>
+                    <td><strong>Качество</strong></td>
+                    <td>Ручной анализ</td>
+                    <td>Claude AI анализ + рекомендации</td>
+                </tr>
+                <tr>
+                    <td><strong>История</strong></td>
+                    <td>Нет</td>
+                    <td>Полная база данных</td>
+                </tr>
+            </table>
+
+            <div class="highlight">
+                <strong>ROI расчёт:</strong><br>
+                Инвестиция $937 окупается за 2-3 месяца за счёт конкурентных преимуществ и экономии времени команды.
+            </div>
+
+            <h2>🔒 Безопасность и надёжность</h2>
+            <ul>
+                <li>✅ Шифрование данных в покое и в движении</li>
+                <li>✅ Соответствие GDPR</li>
+                <li>✅ Ежедневные резервные копии</li>
+                <li>✅ 99.9% гарантированный uptime</li>
+                <li>✅ Безопасное хранение учётных данных</li>
+                <li>✅ Доступ только авторизованным пользователям</li>
+                <li>✅ Регулярные обновления безопасности</li>
+                <li>✅ Мониторинг 24/7</li>
+            </ul>
+
+            <h2>❓ Часто задаваемые вопросы</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <strong>В: Как быстро приходят алерты?</strong><br>
+                    О: В течение 2-5 минут после публикации статьи в источнике
+                </div>
+                <div class="faq-item">
+                    <strong>В: Какая точность определения конкурентов?</strong><br>
+                    О: 95%+ точность. Claude 3.5 Sonnet обучена на вашем списке конкурентов
+                </div>
+                <div class="faq-item">
+                    <strong>В: Можно ли добавить своих конкурентов?</strong><br>
+                    О: Да, полностью. Обновим список в течение часа
+                </div>
+                <div class="faq-item">
+                    <strong>В: Какие расходы после разработки?</strong><br>
+                    О: Только $119 в месяц. Больше ничего. Это включает всю инфраструктуру и Claude API
+                </div>
+                <div class="faq-item">
+                    <strong>В: Что такое CloudMax в счёте?</strong><br>
+                    О: Подписка для разработки без ограничений на токены Claude, чтобы уложиться в сроки
+                </div>
+                <div class="faq-item">
+                    <strong>В: Можно ли добавить функции позже?</strong><br>
+                    О: Да. Детектирование логотипов, мобильное приложение и другое можно добавить отдельно
+                </div>
+            </div>
+
+            <h2>🚀 Следующие шаги</h2>
+            <ol>
+                <li>Прочитайте это полное предложение</li>
+                <li>Посмотрите стоимость и примеры счётов</li>
+                <li>Обсудите внутри (нужна поддержка руководства)</li>
+                <li>Задайте вопросы</li>
+                <li>Примите решение и перейдите к чеклисту</li>
+            </ol>
+
+            <div style="background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 25px; margin: 25px 0;">
+                <h3 style="color: #16a34a;">Готовы к принятию решения?</h3>
+                <p>Перейдите к документу "Чеклист для клиента" для окончательного утверждения и начала процесса.</p>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a href="PRICING.html">← Назад</a>
+            <a href="index.html">Главная</a>
+            <a href="CHECKLIST.html">Чеклист →</a>
+        </div>
+
+        <footer>
+            <p><strong>Competitor Tracker MVP</strong> | Полное предложение</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #aaa;">Действительно до 5 июня 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

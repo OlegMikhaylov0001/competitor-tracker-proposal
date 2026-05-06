@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Краткое резюме - Competitor Tracker MVP</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 0; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+        header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 60px 40px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { font-size: 1.1em; opacity: 0.95; }
+        .content { padding: 40px; }
+        h2 { color: #2563eb; font-size: 1.8em; margin: 30px 0 20px 0; border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
+        h3 { color: #1e40af; font-size: 1.3em; margin: 20px 0 15px 0; }
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .problem, .solution { padding: 20px; border-radius: 8px; color: white; }
+        .problem { background: #dc2626; }
+        .solution { background: #16a34a; }
+        .problem h4, .solution h4 { font-size: 1.2em; margin-bottom: 15px; }
+        .problem ul, .solution ul { list-style: none; margin-left: 0; }
+        .problem li, .solution li { padding: 8px 0 8px 25px; position: relative; }
+        .problem li:before { content: "❌"; position: absolute; left: 0; }
+        .solution li:before { content: "✅"; position: absolute; left: 0; }
+        .price-box { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 30px; border-radius: 10px; margin: 25px 0; text-align: center; }
+        .price-line { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.3); font-size: 1.1em; }
+        .price-line:last-child { border: none; margin-top: 10px; font-weight: bold; font-size: 1.3em; }
+        .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 25px 0; }
+        .timeline-item { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; border-radius: 4px; text-align: center; }
+        .timeline-item strong { color: #2563eb; display: block; margin-bottom: 8px; font-size: 1.1em; }
+        .timeline-item p { font-size: 0.9em; color: #666; }
+        .alert-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: 20px; border-radius: 4px; margin: 25px 0; font-size: 0.95em; }
+        .alert-box strong { color: #7f1d1d; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .feature-box { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 15px; border-radius: 4px; }
+        .feature-box h4 { color: #2563eb; margin-bottom: 8px; }
+        .feature-box p { font-size: 0.9em; color: #666; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #2563eb; color: white; padding: 12px; text-align: left; }
+        table td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+        table tr:nth-child(even) { background: #f9fafb; }
+        .faq { margin: 20px 0; }
+        .faq-item { background: #f9fafb; padding: 15px; margin-bottom: 12px; border-radius: 4px; border-left: 4px solid #2563eb; }
+        .faq-item strong { color: #2563eb; }
+        .nav { background: #f0f9ff; padding: 20px; margin: 30px 0 0 0; text-align: center; border-top: 2px solid #2563eb; }
+        .nav a { display: inline-block; margin: 0 10px; padding: 10px 20px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; }
+        .nav a:hover { background: #1e40af; }
+        footer { background: #1e293b; color: white; padding: 25px 40px; text-align: center; }
+        @media (max-width: 768px) { .comparison, .timeline, .grid-2 { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
+        @media print { body { background: white; } .nav { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Краткое резюме</h1>
+            <p>Competitor Tracker MVP для inDrive</p>
+        </header>
+
+        <div class="content">
+            <h2>🎯 Проблема vs Решение</h2>
+            <div class="comparison">
+                <div class="problem">
+                    <h4>Текущее состояние</h4>
+                    <ul>
+                        <li>Ручной мониторинг конкурентов</li>
+                        <li>Алерты с задержкой на дни</li>
+                        <li>Несогласованные данные</li>
+                        <li>5-10 часов в неделю исследований</li>
+                        <li>Нет стратегического контекста</li>
+                    </ul>
+                </div>
+                <div class="solution">
+                    <h4>С Competitor Tracker</h4>
+                    <ul>
+                        <li>Автоматическое наблюдение 24/7</li>
+                        <li>Алерты за 2-5 минут</li>
+                        <li>AI анализ структурированные данные</li>
+                        <li>Автоматизировано, алерты в Slack</li>
+                        <li>AI объясняет причины и рекомендации</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>📊 Что вы получаете</h2>
+            <div class="grid-2">
+                <div class="feature-box">
+                    <h4>🔔 SLACK АЛЕРТЫ</h4>
+                    <p>Мгновенные уведомления в реальном времени о важных событиях конкурентов</p>
+                </div>
+                <div class="feature-box">
+                    <h4>📈 ВЕБ-ПАНЕЛЬ</h4>
+                    <p>Отслеживайте тренды, архивируйте данные и ищите исторические инсайты</p>
+                </div>
+                <div class="feature-box" style="grid-column: 1 / -1;">
+                    <h4>✅ ОДНА ИНТЕГРИРОВАННАЯ СИСТЕМА</h4>
+                    <p>Всё работает вместе - Slack получает алерты, панель хранит историю, ваша команда получает инсайты</p>
+                </div>
+            </div>
+
+            <h2>💰 Стоимость</h2>
+            <div class="price-box">
+                <div class="price-line">
+                    <span>Разработка:</span>
+                    <span>$718</span>
+                </div>
+                <div class="price-line">
+                    <span>CloudMax (для разработки без лимитов):</span>
+                    <span>$100</span>
+                </div>
+                <div class="price-line">
+                    <span>Инфраструктура (месяц 1):</span>
+                    <span>$119</span>
+                </div>
+                <div class="price-line">
+                    <span>МЕСЯЦ 1 ИТОГО:</span>
+                    <span>$937</span>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Период</th>
+                    <th>Стоимость</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>Месяцы 2-12</td>
+                    <td>$119/месяц</td>
+                    <td>Render.com хостинг, Claude API, мониторинг</td>
+                </tr>
+                <tr>
+                    <td><strong>ГОД 1 ИТОГО</strong></td>
+                    <td><strong>$2,246</strong></td>
+                    <td>Включает разработку и 12 месяцев хостинга</td>
+                </tr>
+            </table>
+
+            <h2>⏱️ Расписание реализации</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>Неделя 1</strong>
+                    <p>Подготовка, интеграция Slack, источники новостей</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>Неделя 2</strong>
+                    <p>Разработка системы, Claude интеграция, тестирование</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>Неделя 3</strong>
+                    <p>Обучение команды, финальные настройки, запуск</p>
+                </div>
+                <div class="timeline-item">
+                    <strong>Готово!</strong>
+                    <p>Система LIVE на Slack! 🚀</p>
+                </div>
+            </div>
+
+            <h2>🌍 Что мы мониторим</h2>
+            <h3>12 конкурентов в 4 регионах</h3>
+            <ul style="margin: 20px 0 20px 20px;">
+                <li><strong>🇧🇷 ЛАТАМ:</strong> Uber, DiDi, Cabify, 99</li>
+                <li><strong>🇵🇭 ЮВА:</strong> Grab, Gojek, Maxim, Bolt</li>
+                <li><strong>🇪🇬 Африка/МЕА:</strong> Bolt, Uber, Careem, Yassir, Heetch</li>
+                <li><strong>🇷🇺 СНГ:</strong> Yandex Go, Bolt, Maxim</li>
+            </ul>
+
+            <h3>8 типов событий</h3>
+            <ul style="margin: 20px 0 20px 20px;">
+                <li>🏙️ <strong>Расширение на рынки</strong> — новые города и регионы</li>
+                <li>📢 <strong>Кампании</strong> — маркетинг инициативы</li>
+                <li>💰 <strong>Цены</strong> — изменения в ценообразовании</li>
+                <li>⚙️ <strong>Функции</strong> — новые функции продукта</li>
+                <li>🤝 <strong>Партнёрства</strong> — стратегические союзы</li>
+                <li>📋 <strong>Нормативы</strong> — нормативные новости</li>
+                <li>💵 <strong>Финансирование</strong> — раунды инвестиций</li>
+                <li>👥 <strong>Водители</strong> — операции с водителями</li>
+            </ul>
+
+            <h2>📈 Пример алерта</h2>
+            <div class="alert-box">
+                <div style="font-size: 1.1em; margin-bottom: 15px;"><strong>🚨 АЛЕРТ КОНКУРЕНТА — Филиппины</strong></div>
+                <strong>Конкурент:</strong> Grab<br>
+                <strong>Приоритет:</strong> 🔴 ВЫСОКИЙ<br>
+                <strong>Событие:</strong> Расширение на рынок<br><br>
+
+                <strong>Что произошло:</strong><br>
+                Grab запустился в 5 новых индонезийских городах с агрессивным ценообразованием и рекрутингом 5,000 водителей<br><br>
+
+                <strong>Почему это важно:</strong><br>
+                → Прямое расширение на ключевом рынке ЮВА<br>
+                → Увеличение давления на предложение водителей<br>
+                → Агрессивное ценовое давление<br><br>
+
+                <strong>Что делать:</strong><br>
+                → Пересмотреть стратегию цен<br>
+                → Оценить удержание водителей<br>
+                → Подготовить контркампанию
+            </div>
+
+            <h2>✅ Ценность для бизнеса</h2>
+            <table>
+                <tr>
+                    <th>Преимущество</th>
+                    <th>Влияние</th>
+                    <th>ROI</th>
+                </tr>
+                <tr>
+                    <td><strong>Скорость</strong></td>
+                    <td>Алерты за минуты, не дни</td>
+                    <td>Часы в неделю экономии</td>
+                </tr>
+                <tr>
+                    <td><strong>Инсайты</strong></td>
+                    <td>AI анализ вместо ручных исследований</td>
+                    <td>Лучшие решения</td>
+                </tr>
+                <tr>
+                    <td><strong>Охват</strong></td>
+                    <td>Все конкуренты, все регионы, 24/7</td>
+                    <td>Нет пропусков</td>
+                </tr>
+                <tr>
+                    <td><strong>Консистентность</strong></td>
+                    <td>Структурированные данные</td>
+                    <td>Сравнимые тренды</td>
+                </tr>
+            </table>
+
+            <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 4px; margin: 25px 0;">
+                <strong>Окупаемость:</strong> 2-3 месяца за счёт конкурентных преимуществ
+            </div>
+
+            <h2>🔒 Безопасность</h2>
+            <ul style="margin: 20px 0 20px 20px;">
+                <li>✅ Шифрованное хранилище данных</li>
+                <li>✅ Соответствие GDPR</li>
+                <li>✅ Ежедневные резервные копии</li>
+                <li>✅ 99.9% гарантированный uptime</li>
+                <li>✅ Доступ только через Slack</li>
+            </ul>
+
+            <h2>🤖 Технология</h2>
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; border-radius: 4px; margin: 25px 0;">
+                <strong>Claude 3.5 Sonnet API:</strong> Оптимальный баланс между качеством анализа и стоимостью обработки<br><br>
+                <strong>Render.com:</strong> Инфраструктура с встроенной PostgreSQL базой для надёжности<br><br>
+                <strong>CloudMax подписка:</strong> Для разработки без ограничений на токены, чтобы уложиться в сроки
+            </div>
+
+            <h2>💡 Часто задаваемые вопросы</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <strong>В: Как быстро приходят алерты?</strong><br>
+                    О: В течение 2-5 минут после публикации
+                </div>
+                <div class="faq-item">
+                    <strong>В: Какая точность?</strong><br>
+                    О: 95%+ правильное определение конкурента
+                </div>
+                <div class="faq-item">
+                    <strong>В: Можно ли настроить?</strong><br>
+                    О: Да - конкуренты, типы алертов, формат
+                </div>
+                <div class="faq-item">
+                    <strong>В: Какие расходы после разработки?</strong><br>
+                    О: Только $119 в месяц за хостинг и Claude API. Больше ничего
+                </div>
+                <div class="faq-item">
+                    <strong>В: Что такое CloudMax?</strong><br>
+                    О: Подписка для разработки, чтобы не упираться в лимиты токенов Claude
+                </div>
+            </div>
+
+            <h2>📞 Следующие шаги</h2>
+            <ol style="margin: 20px 0 20px 40px;">
+                <li><strong>Прочитайте</strong> это резюме</li>
+                <li><strong>Посмотрите</strong> стоимость в следующем документе</li>
+                <li><strong>Обсудите</strong> внутри (30 мин)</li>
+                <li><strong>Задайте</strong> вопросы</li>
+                <li><strong>Примите решение:</strong> ДА или НЕТ</li>
+            </ol>
+
+            <div style="background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 25px; margin: 25px 0;">
+                <h3 style="color: #16a34a;">Готовы начинать?</h3>
+                <p>Перейдите к следующему документу "Стоимость" для одобрения бюджета.</p>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">← Вернуться к главной</a>
+            <a href="PRICING.html">Стоимость →</a>
+        </div>
+
+        <footer>
+            <p><strong>Competitor Tracker MVP</strong> | Краткое резюме</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #aaa;">Действительно до 5 июня 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

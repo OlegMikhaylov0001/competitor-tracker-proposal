@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чеклист для клиента - Competitor Tracker MVP</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 0; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+        header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 60px 40px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .content { padding: 40px; }
+        h2 { color: #2563eb; font-size: 1.8em; margin: 30px 0 20px 0; border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
+        h3 { color: #1e40af; font-size: 1.3em; margin: 20px 0 15px 0; }
+        .checklist { background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 25px; margin: 20px 0; }
+        .checklist-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(22, 163, 74, 0.2); }
+        .checklist-item:last-child { border-bottom: none; }
+        .checkbox { width: 24px; height: 24px; border: 2px solid #16a34a; border-radius: 4px; margin-right: 15px; flex-shrink: 0; cursor: pointer; }
+        .checklist-item label { cursor: pointer; flex-grow: 1; }
+        .section-box { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .section-box h4 { color: #2563eb; margin-bottom: 15px; font-size: 1.1em; }
+        .section-box ul { list-style: none; margin-left: 0; }
+        .section-box li { padding: 8px 0; padding-left: 20px; position: relative; }
+        .section-box li:before { content: "→"; position: absolute; left: 0; color: #2563eb; font-weight: bold; }
+        .reading-guide { background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 25px; margin: 25px 0; }
+        .reading-guide h4 { color: #16a34a; margin-bottom: 15px; }
+        .reading-path { background: white; border-left: 4px solid #16a34a; padding: 15px; margin: 12px 0; border-radius: 4px; }
+        .reading-path strong { color: #16a34a; display: block; margin-bottom: 5px; }
+        .decision-box { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 25px 0; border-radius: 4px; }
+        .decision-box h4 { color: #b45309; margin-bottom: 15px; }
+        .decision-box input[type="text"] { width: 100%; padding: 8px; margin: 5px 0 10px 0; border: 1px solid #f59e0b; border-radius: 4px; }
+        .table-info { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .table-info th { background: #2563eb; color: white; padding: 12px; text-align: left; }
+        .table-info td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+        .table-info tr:nth-child(even) { background: #f9fafb; }
+        .cta-box { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; padding: 30px; border-radius: 10px; margin: 25px 0; text-align: center; }
+        .cta-box h3 { color: white; border: none; margin: 0 0 15px 0; }
+        .cta-box p { margin-bottom: 15px; font-size: 1.1em; }
+        .nav { background: #f0f9ff; padding: 20px; margin: 30px 0 0 0; text-align: center; border-top: 2px solid #2563eb; }
+        .nav a { display: inline-block; margin: 0 10px; padding: 10px 20px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; }
+        .nav a:hover { background: #1e40af; }
+        footer { background: #1e293b; color: white; padding: 25px 40px; text-align: center; }
+        .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 25px 0; }
+        .timeline-day { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 15px; border-radius: 4px; text-align: center; }
+        .timeline-day strong { color: #2563eb; display: block; font-size: 1.1em; margin-bottom: 5px; }
+        .timeline-day p { font-size: 0.9em; color: #666; }
+        @media (max-width: 768px) { .timeline { grid-template-columns: repeat(3, 1fr); } header h1 { font-size: 2em; } }
+        @media print { body { background: white; } .nav, .checkbox { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✅ Чеклист для клиента</h1>
+            <p>Маршрут к решению и подписанию контракта</p>
+        </header>
+
+        <div class="content">
+            <h2>📖 Как читать эти документы</h2>
+            <div class="reading-guide">
+                <h4>🎯 Рекомендуемый порядок чтения:</h4>
+
+                <div class="reading-path">
+                    <strong>ДЛЯ РУКОВОДИТЕЛЯ (5 минут)</strong>
+                    1. Краткое резюме (EXECUTIVE_SUMMARY.html)<br>
+                    2. Стоимость (PRICING.html)<br>
+                    3. Решение: одобрить или обсудить
+                </div>
+
+                <div class="reading-path">
+                    <strong>ДЛЯ ФИНАНСОВОГО ОТДЕЛА (15 минут)</strong>
+                    1. Стоимость и процесс (PRICING.html)<br>
+                    2. Примеры счётов<br>
+                    3. Одобрение бюджета
+                </div>
+
+                <div class="reading-path">
+                    <strong>ДЛЯ ТЕХНИЧЕСКОЙ КОМАНДЫ (30 минут)</strong>
+                    1. Полное предложение (PROPOSAL.html)<br>
+                    2. Архитектура системы<br>
+                    3. Claude 3.5 Sonnet и расчет токенов<br>
+                    4. Технические вопросы
+                </div>
+
+                <div class="reading-path">
+                    <strong>ДЛЯ PROJECT MANAGER (25 минут)</strong>
+                    1. Этот чеклист<br>
+                    2. План реализации (PROPOSAL.html)<br>
+                    3. Подготовка внутреннего обсуждения
+                </div>
+            </div>
+
+            <h2>💡 Ключевые цифры</h2>
+            <div class="section-box">
+                <h4>Инвестиция и ROI</h4>
+                <ul>
+                    <li><strong>Месяц 1:</strong> $937 (разработка $718 + CloudMax $100 + хостинг $119)</li>
+                    <li><strong>Ежемесячно после:</strong> $119 (Render.com + Claude API + мониторинг)</li>
+                    <li><strong>Год 1:</strong> $2,246</li>
+                    <li><strong>Окупаемость:</strong> 2-3 месяца</li>
+                    <li><strong>Контракт:</strong> Только ежемесячный, можно отменить</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h4>Что мониторим</h4>
+                <ul>
+                    <li><strong>12 конкурентов</strong> в 4 регионах (ЛАТАМ, ЮВА, Африка/МЕА, СНГ)</li>
+                    <li><strong>8 типов событий</strong> (цены, новые функции, расширения, партнёрства и т.д.)</li>
+                    <li><strong>50+ источников новостей</strong> отслеживаются 24/7</li>
+                    <li><strong>2-5 минут</strong> - скорость доставки алерта</li>
+                    <li><strong>95%+ точность</strong> определения конкурентов</li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h4>Технология</h4>
+                <ul>
+                    <li><strong>Claude 3.5 Sonnet:</strong> Анализ новостей и генерация рекомендаций</li>
+                    <li><strong>Render.com:</strong> Инфраструктура с встроенной PostgreSQL</li>
+                    <li><strong>CloudMax:</strong> Подписка для разработки без ограничений на токены</li>
+                </ul>
+            </div>
+
+            <h2>🎯 Ключевые решения</h2>
+
+            <h3>Вопрос 1: Одобрить ли стоимость?</h3>
+            <div class="decision-box">
+                <h4>☐ ДА - Месяц 1: $937, затем $119/месяц</h4>
+                <h4>☐ НЕТ - Требуется обсуждение (укажите почему)</h4>
+                <input type="text" placeholder="Причины для обсуждения...">
+            </div>
+
+            <h3>Вопрос 2: Когда запускать?</h3>
+            <div class="decision-box">
+                <h4>☐ АСAP - 3 недели</h4>
+                <h4>☐ В течение месяца</h4>
+                <h4>☐ После Q2</h4>
+            </div>
+
+            <h3>Вопрос 3: Кто будет point person?</h3>
+            <div class="decision-box">
+                <h4>Основной контакт:</h4>
+                <input type="text" placeholder="Имя">
+                <input type="text" placeholder="Email">
+            </div>
+
+            <h2>✅ Pre-approval чеклист</h2>
+
+            <h3>Бизнес-требования</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Интеграция со Slack соответствует нашим нуждам</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>4 региона отслеживания правильные</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Список из 12 конкурентов подходит</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>8 типов алертов соответствуют нашим нуждам</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>График реализации (3 недели) нас устраивает</label>
+                </div>
+            </div>
+
+            <h3>Финансовые требования</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Бюджет одобрен для месяца 1 ($937)</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Ежемесячная стоимость $119 приемлема</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Платёжные условия (50/50 разделение) понятны</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Нет скрытых расходов или сюрпризов</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>ROI расписание (2-3 месяца) приемлемо</label>
+                </div>
+            </div>
+
+            <h3>Технические требования</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Render.com инфраструктура приемлема</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Claude 3.5 Sonnet API качество одобрено</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Стандарты безопасности/GDPR соответствуют</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Slack интеграция совместима с нашей системой</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Модель поддержки нас устраивает</label>
+                </div>
+            </div>
+
+            <h3>Операционные требования</h3>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Доступ администратора Slack готов</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Point person назначен</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>График обучения команды определён</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Процесс обратной связи установлен</label>
+                </div>
+            </div>
+
+            <h2>📅 Расписание к подписанию</h2>
+            <div class="timeline">
+                <div class="timeline-day">
+                    <strong>День 1</strong>
+                    <p>Прочитайте документы</p>
+                </div>
+                <div class="timeline-day">
+                    <strong>День 2</strong>
+                    <p>Внутреннее обсуждение</p>
+                </div>
+                <div class="timeline-day">
+                    <strong>День 3</strong>
+                    <p>Решение: ДА/НЕТ</p>
+                </div>
+                <div class="timeline-day">
+                    <strong>День 5</strong>
+                    <p>Контракт подписан</p>
+                </div>
+                <div class="timeline-day">
+                    <strong>День 7</strong>
+                    <p>Разработка начинается</p>
+                </div>
+            </div>
+
+            <h2>🚀 Следующие шаги</h2>
+
+            <h3>Шаг 1: Подготовка к решению</h3>
+            <div class="section-box">
+                <h4>Перед согласованием убедитесь:</h4>
+                <ul>
+                    <li>Все члены команды прочитали нужные документы</li>
+                    <li>Финансы одобрили бюджет</li>
+                    <li>Технический отдел проверил архитектуру</li>
+                    <li>Марком понимает что они будут получать</li>
+                </ul>
+            </div>
+
+            <h3>Шаг 2: Принятие решения</h3>
+            <div class="section-box">
+                <h4>Вы решаете:</h4>
+                <ul>
+                    <li>✅ Инвестиция $937 месяц 1 + $119/месяц приемлема</li>
+                    <li>✅ График 3 недели к запуску нас устраивает</li>
+                    <li>✅ Назначена контактная личность для связи</li>
+                    <li>✅ Slack workspace готов</li>
+                </ul>
+            </div>
+
+            <h3>Шаг 3: Контракт и платёж</h3>
+            <div class="section-box">
+                <h4>Мы отправим:</h4>
+                <ul>
+                    <li>📄 Контракт на подпись</li>
+                    <li>💰 Счёт #1 (Advance payment $519)</li>
+                    <li>📞 Приглашение на кик-офф звонок (15 мин)</li>
+                </ul>
+            </div>
+
+            <h3>Шаг 4: Начало разработки</h3>
+            <div class="section-box">
+                <h4>Когда мы получим платёж:</h4>
+                <ul>
+                    <li>🏗️ Неделя 1: Подготовка и интеграция</li>
+                    <li>⚙️ Неделя 2: Разработка и тестирование</li>
+                    <li>🚀 Неделя 3: Обучение и запуск</li>
+                </ul>
+            </div>
+
+            <div class="cta-box">
+                <h3>Готовы начинать?</h3>
+                <p>Если все 4 чеклиста выполнены и вы готовы двигаться вперёд:</p>
+                <p style="font-size: 1.2em; font-weight: bold; margin: 15px 0;">Свяжитесь с point person</p>
+                <p>Оберните информацию и принятое решение и передайте разработчику</p>
+            </div>
+
+            <h2>🎯 Что включено в пакет</h2>
+
+            <div class="section-box" style="background: #f0fdf4; border-left-color: #16a34a;">
+                <h4 style="color: #16a34a;">✅ Разработка включает ($718):</h4>
+                <ul>
+                    <li>Полная интеграция со Slack</li>
+                    <li>Система мониторинга новостей 24/7</li>
+                    <li>Claude 3.5 Sonnet API интеграция</li>
+                    <li>Веб-панель для отслеживания</li>
+                    <li>PostgreSQL база данных</li>
+                    <li>Полное тестирование</li>
+                </ul>
+            </div>
+
+            <div class="section-box" style="background: #f0fdf4; border-left-color: #16a34a;">
+                <h4 style="color: #16a34a;">✅ Ежемесячно включает ($119):</h4>
+                <ul>
+                    <li>Render.com хостинг ($12)</li>
+                    <li>Claude 3.5 Sonnet API ($81)</li>
+                    <li>RSS мониторинг ($15)</li>
+                    <li>Мониторинг и uptime ($10)</li>
+                    <li>Домен и сертификаты ($1)</li>
+                </ul>
+            </div>
+
+            <div class="section-box" style="background: #f0fdf4; border-left-color: #16a34a;">
+                <h4 style="color: #16a34a;">✅ CloudMax ($100) включает:</h4>
+                <ul>
+                    <li>Подписка для разработки без ограничений на токены</li>
+                    <li>Чтобы уложиться в 3-недельные сроки</li>
+                    <li>Разовая стоимость при разработке</li>
+                </ul>
+            </div>
+
+            <h2>📋 Финальный чеклист</h2>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Прочитали Краткое резюме</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Прочитали Стоимость и процесс</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Прочитали Полное предложение</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Внутреннее обсуждение завершено</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Финансы одобрили бюджет</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Назначен point person</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Slack workspace подготовлен</label>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox"></div>
+                    <label>Готовы подписать контракт</label>
+                </div>
+            </div>
+
+            <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 10px; padding: 25px; margin: 25px 0;">
+                <h3 style="color: #b45309; margin-bottom: 15px;">Когда всё готово:</h3>
+                <p style="font-size: 1.1em;">Свяжитесь через WhatsApp с point person и передайте принятое решение и необходимые детали.</p>
+                <p style="margin-top: 15px; color: #b45309;"><strong>Время до запуска: 3 недели от дня подписания контракта</strong></p>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a href="PROPOSAL.html">← Полное предложение</a>
+            <a href="index.html">Главная</a>
+        </div>
+
+        <footer>
+            <p><strong>Competitor Tracker MVP</strong> | Чеклист для клиента</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #aaa;">Действительно до 5 июня 2026 | Версия 1.0</p>
+        </footer>
+    </div>
+</body>
+</html>

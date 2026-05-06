@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стоимость - Competitor Tracker MVP</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 0; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+        header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 60px 40px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .content { padding: 40px; }
+        h2 { color: #2563eb; font-size: 1.8em; margin: 30px 0 20px 0; border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
+        h3 { color: #1e40af; font-size: 1.3em; margin: 20px 0 15px 0; }
+        .price-box { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; padding: 30px; border-radius: 10px; margin: 25px 0; }
+        .price-line { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.3); font-size: 1.1em; }
+        .price-line:last-child { border: none; margin-top: 10px; font-weight: bold; font-size: 1.3em; }
+        .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0; }
+        .breakdown-box { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; border-radius: 8px; }
+        .breakdown-box h4 { color: #2563eb; margin-bottom: 15px; font-size: 1.2em; }
+        .breakdown-box ul { list-style: none; margin-left: 0; }
+        .breakdown-box li { padding: 8px 0; padding-left: 20px; position: relative; }
+        .breakdown-box li:before { content: "•"; position: absolute; left: 0; color: #2563eb; font-weight: bold; }
+        .breakdown-box .amount { color: #2563eb; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #2563eb; color: white; padding: 12px; text-align: left; font-weight: 600; }
+        table td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+        table tr:nth-child(even) { background: #f9fafb; }
+        table .amount { color: #2563eb; font-weight: bold; }
+        .architecture { background: #f0f9ff; border: 2px solid #2563eb; border-radius: 10px; padding: 25px; margin: 25px 0; }
+        .architecture h4 { color: #2563eb; margin-bottom: 15px; }
+        .flow { background: white; padding: 15px; border-left: 4px solid #2563eb; margin: 10px 0; border-radius: 4px; }
+        .flow strong { color: #2563eb; display: block; margin-bottom: 5px; }
+        .faq { margin: 20px 0; }
+        .faq-item { background: #f9fafb; padding: 15px; margin-bottom: 12px; border-radius: 4px; border-left: 4px solid #2563eb; }
+        .faq-item strong { color: #2563eb; }
+        .invoice-box { background: #f0f9ff; border: 2px solid #2563eb; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .invoice-box h4 { color: #2563eb; margin-bottom: 15px; }
+        .invoice-line { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(37, 99, 235, 0.2); }
+        .invoice-line:last-child { border: none; font-weight: bold; font-size: 1.1em; }
+        .highlight { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 4px; margin: 25px 0; }
+        .nav { background: #f0f9ff; padding: 20px; margin: 30px 0 0 0; text-align: center; border-top: 2px solid #2563eb; }
+        .nav a { display: inline-block; margin: 0 10px; padding: 10px 20px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; }
+        .nav a:hover { background: #1e40af; }
+        footer { background: #1e293b; color: white; padding: 25px 40px; text-align: center; }
+        @media (max-width: 768px) { .breakdown-grid { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
+        @media print { body { background: white; } .nav { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Стоимость и процесс</h1>
+            <p>Полное объяснение инвестиции и реализации</p>
+        </header>
+
+        <div class="content">
+            <h2>💰 Инвестиция</h2>
+
+            <h3>Месяц 1: Разработка и запуск</h3>
+            <div class="price-box">
+                <div class="price-line">
+                    <span>Разработка (один раз):</span>
+                    <span>$718</span>
+                </div>
+                <div class="price-line">
+                    <span>CloudMax (для разработки без лимитов):</span>
+                    <span>$100</span>
+                </div>
+                <div class="price-line">
+                    <span>Инфраструктура (месяц 1):</span>
+                    <span>$119</span>
+                </div>
+                <div class="price-line">
+                    <span>МЕСЯЦ 1 ИТОГО:</span>
+                    <span>$937</span>
+                </div>
+            </div>
+
+            <h3>Ежемесячно: Постоянная операция</h3>
+            <div class="price-box">
+                <div class="price-line">
+                    <span>Render.com (Node.js + PostgreSQL):</span>
+                    <span>$12</span>
+                </div>
+                <div class="price-line">
+                    <span>Claude 3.5 Sonnet API (100-150 алертов/день):</span>
+                    <span>$81</span>
+                </div>
+                <div class="price-line">
+                    <span>RSS мониторинг (50+ источников):</span>
+                    <span>$15</span>
+                </div>
+                <div class="price-line">
+                    <span>Мониторинг & uptime:</span>
+                    <span>$10</span>
+                </div>
+                <div class="price-line">
+                    <span>Домен и сертификаты:</span>
+                    <span>$1</span>
+                </div>
+                <div class="price-line">
+                    <span>ЕЖЕМЕСЯЧНО:</span>
+                    <span>$119</span>
+                </div>
+            </div>
+
+            <h3>Годовой расчёт</h3>
+            <table>
+                <tr>
+                    <th>Период</th>
+                    <th>Стоимость</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>Месяц 1</td>
+                    <td class="amount">$937</td>
+                    <td>Разработка + CloudMax + хостинг</td>
+                </tr>
+                <tr>
+                    <td>Месяцы 2-12</td>
+                    <td class="amount">$119 × 11 = $1,309</td>
+                    <td>Хостинг и API только</td>
+                </tr>
+                <tr>
+                    <td><strong>ГОД 1 ИТОГО</strong></td>
+                    <td class="amount"><strong>$2,246</strong></td>
+                    <td>Всё включено</td>
+                </tr>
+                <tr>
+                    <td>Среднее в месяц</td>
+                    <td class="amount">$187</td>
+                    <td>За 12 месяцев</td>
+                </tr>
+            </table>
+
+            <h2>📋 Полный разбор месяца 1 ($937)</h2>
+            <table>
+                <tr>
+                    <th>Компонент</th>
+                    <th>Стоимость</th>
+                    <th>Что это включает</th>
+                </tr>
+                <tr style="background: #fff8f0;">
+                    <td colspan="3"><strong>РАЗРАБОТКА И РАЗВОРАЧИВАНИЕ ($718)</strong></td>
+                </tr>
+                <tr>
+                    <td>Интеграция Slack</td>
+                    <td class="amount">$105</td>
+                    <td>Бот, вебхуки, форматирование</td>
+                </tr>
+                <tr>
+                    <td>Система мониторинга новостей</td>
+                    <td class="amount">$105</td>
+                    <td>RSS ленты, 50+ источников</td>
+                </tr>
+                <tr>
+                    <td>Веб-панель</td>
+                    <td class="amount">$105</td>
+                    <td>Интерфейс, поиск, анализ</td>
+                </tr>
+                <tr>
+                    <td>Хранилище и БД (Render.com)</td>
+                    <td class="amount">$105</td>
+                    <td>PostgreSQL, облако, резервные копии</td>
+                </tr>
+                <tr>
+                    <td>Claude 3.5 Sonnet конфигурация</td>
+                    <td class="amount">$105</td>
+                    <td>API интеграция, анализ, рекомендации</td>
+                </tr>
+                <tr>
+                    <td>Тестирование и QA</td>
+                    <td class="amount">$75</td>
+                    <td>Проверка всех компонентов</td>
+                </tr>
+                <tr>
+                    <td>Буфер рисков (35%)</td>
+                    <td class="amount">$198</td>
+                    <td>На непредвиденные проблемы</td>
+                </tr>
+                <tr style="background: #e8f2ff;">
+                    <td><strong>Разработка — итого</strong></td>
+                    <td class="amount"><strong>$718</strong></td>
+                    <td></td>
+                </tr>
+                <tr style="background: #fff8f0;">
+                    <td colspan="3"><strong>РАЗВИТИЕ ($100)</strong></td>
+                </tr>
+                <tr>
+                    <td>CloudMax подписка</td>
+                    <td class="amount">$100</td>
+                    <td>Для разработки без ограничений на токены</td>
+                </tr>
+                <tr style="background: #fff8f0;">
+                    <td colspan="3"><strong>ИНФРАСТРУКТУРА МЕСЯЦ 1 ($119)</strong></td>
+                </tr>
+                <tr>
+                    <td>Render.com (Node.js + PostgreSQL)</td>
+                    <td class="amount">$12</td>
+                    <td>Серверы и база данных</td>
+                </tr>
+                <tr>
+                    <td>Claude 3.5 Sonnet API</td>
+                    <td class="amount">$81</td>
+                    <td>100-150 алертов/день</td>
+                </tr>
+                <tr>
+                    <td>RSS мониторинг</td>
+                    <td class="amount">$15</td>
+                    <td>50+ источников новостей</td>
+                </tr>
+                <tr>
+                    <td>Мониторинг системы</td>
+                    <td class="amount">$10</td>
+                    <td>Uptime гарантия и поддержка</td>
+                </tr>
+                <tr>
+                    <td>Домен и сертификаты</td>
+                    <td class="amount">$1</td>
+                    <td>SSL сертификат и домен</td>
+                </tr>
+                <tr style="background: #e8f2ff;">
+                    <td><strong>Инфраструктура — итого</strong></td>
+                    <td class="amount"><strong>$119</strong></td>
+                    <td></td>
+                </tr>
+                <tr style="background: #f0fdf4; font-weight: bold;">
+                    <td>МЕСЯЦ 1 ПОЛНАЯ СТОИМОСТЬ</td>
+                    <td class="amount" style="font-size: 1.2em;">$937</td>
+                    <td>Разработка ($718) + CloudMax ($100) + Инфра ($119)</td>
+                </tr>
+            </table>
+
+            <h2>🔧 Архитектура и инфраструктура</h2>
+
+            <h3>Render.com инфраструктура</h3>
+            <div class="architecture">
+                <h4>Почему Render.com?</h4>
+                <div class="flow">
+                    <strong>✅ PostgreSQL включена в плане</strong>
+                    <p>Не нужно платить отдельно за БД ($25 экономии/месяц)</p>
+                </div>
+                <div class="flow">
+                    <strong>✅ Простая развёртка Node.js</strong>
+                    <p>Git интеграция, автоматическое обновление</p>
+                </div>
+                <div class="flow">
+                    <strong>✅ Встроенный мониторинг</strong>
+                    <p>Logs, metrics, alerts из коробки</p>
+                </div>
+                <div class="flow">
+                    <strong>✅ Надёжность</strong>
+                    <p>99.9% uptime guarantee, автоматическое восстановление</p>
+                </div>
+            </div>
+
+            <h3>Claude 3.5 Sonnet API - расчет токенов</h3>
+            <div class="architecture">
+                <h4>Понимание стоимости Claude обработки</h4>
+                <div class="flow">
+                    <strong>📊 Что такое токены?</strong>
+                    <p>1 токен ≈ 4 символа текста. Claude API считает токены для input и output</p>
+                </div>
+                <div class="flow">
+                    <strong>🔍 Процесс обработки алерта:</strong>
+                    <p>• Получаем статью (~500-1000 слов) = ~300-500 токенов<br>
+                    • Отправляем Claude на анализ = ~500 токенов input<br>
+                    • Получаем рекомендации = ~200 токенов output<br>
+                    • ИТОГО на алерт: ~700 токенов</p>
+                </div>
+                <div class="flow">
+                    <strong>📈 Ежедневные расходы:</strong>
+                    <p>100-150 алертов/день × 700 токенов = 70,000-105,000 токенов/день</p>
+                </div>
+                <div class="flow">
+                    <strong>💰 Claude 3.5 Sonnet цена:</strong>
+                    <p>• Input токены: $3 за 1 млн<br>
+                    • Output токены: $15 за 1 млн<br>
+                    • Результат: ~$80-90/месяц для 100-150 алертов/день</p>
+                </div>
+                <div class="flow">
+                    <strong>✅ Почему 3.5 Sonnet?</strong>
+                    <p>• Отличное качество анализа<br>
+                    • Оптимальная цена (в 10+ раз дешевле Opus)<br>
+                    • Быстрая обработка (2-5 минут доставки)<br>
+                    • Хорошо понимает контекст и стратегию</p>
+                </div>
+            </div>
+
+            <h2>📅 План реализации</h2>
+
+            <h3>Неделя 1: Подготовка</h3>
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 15px 0; border-radius: 4px;">
+                <strong>День 1-2:</strong> Render.com проект, PostgreSQL, хранилище<br>
+                <strong>День 3:</strong> Slack интеграция и вебхуки<br>
+                <strong>День 4-5:</strong> RSS мониторинг, подключение источников<br>
+                <strong>Вывод:</strong> Инфраструктура готова
+            </div>
+
+            <h3>Неделя 2: Разработка</h3>
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 15px 0; border-radius: 4px;">
+                <strong>День 1-3:</strong> Claude интеграция, анализ логика, приоритизация<br>
+                <strong>День 4-5:</strong> Тестирование на реальных новостях конкурентов<br>
+                <strong>Вывод:</strong> Система работает, алерты в Slack
+            </div>
+
+            <h3>Неделя 3: Запуск</h3>
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 15px 0; border-radius: 4px;">
+                <strong>День 1-2:</strong> Обучение вашей команды<br>
+                <strong>День 3-4:</strong> Финальные настройки под процессы<br>
+                <strong>День 5:</strong> Система LIVE!<br>
+                <strong>Вывод:</strong> Команда получает первые алерты
+            </div>
+
+            <h2>📋 Модель оплаты</h2>
+
+            <h3>Первая итерация: Полная разработка и запуск</h3>
+            <div class="invoice-box">
+                <h4>Месяц 1: Разработка, развёртывание и запуск</h4>
+                <div class="invoice-line">
+                    <span>Разработка всех компонентов:</span>
+                    <span>$718</span>
+                </div>
+                <div class="invoice-line">
+                    <span>CloudMax (без лимитов на токены):</span>
+                    <span>$100</span>
+                </div>
+                <div class="invoice-line">
+                    <span>Инфраструктура месяц 1:</span>
+                    <span>$119</span>
+                </div>
+                <div class="invoice-line">
+                    <span>ИТОГО ЗА ПОЛНУЮ РАЗРАБОТКУ:</span>
+                    <span>$937</span>
+                </div>
+            </div>
+
+            <h3>Ежемесячное обслуживание и поддержка</h3>
+            <div class="invoice-box">
+                <h4>Месячная подписка (начиная со дня 22)</h4>
+                <div class="invoice-line">
+                    <span>Инфраструктура Render.com (+ PostgreSQL):</span>
+                    <span>$12</span>
+                </div>
+                <div class="invoice-line">
+                    <span>Claude API (обработка алертов):</span>
+                    <span>$81</span>
+                </div>
+                <div class="invoice-line">
+                    <span>RSS мониторинг и агрегация:</span>
+                    <span>$15</span>
+                </div>
+                <div class="invoice-line">
+                    <span>Мониторинг системы и поддержка:</span>
+                    <span>$10</span>
+                </div>
+                <div class="invoice-line">
+                    <span>Домен и сертификаты:</span>
+                    <span>$1</span>
+                </div>
+                <div class="invoice-line">
+                    <span>ИТОГО ЕЖЕМЕСЯЧНО:</span>
+                    <span>$119</span>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <strong>Модель работы:</strong><br>
+                • <strong>Месяц 1 ($937):</strong> Полная разработка, тестирование и запуск системы<br>
+                • <strong>Месяц 2+:</strong> Текущая поддержка, мониторинг и обслуживание ($119/месяц)<br>
+                • <strong>Включено в поддержку:</strong> Мониторинг работоспособности системы, резервные копии данных, обновления компонентов
+            </div>
+
+            <h2>🎛️ Управление данными</h2>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                <h4 style="color: #2563eb; margin-bottom: 15px;">Полный контроль за вашими данными</h4>
+                <p style="margin-bottom: 12px;">Система предоставляет вам полный доступ к управлению данными о конкурентах:</p>
+                <ul style="margin-left: 20px; margin-bottom: 12px;">
+                    <li style="margin-bottom: 8px;"><strong>Веб-панель:</strong> Полный интерфейс для просмотра, поиска и анализа всех собранных алертов</li>
+                    <li style="margin-bottom: 8px;"><strong>Экспорт данных:</strong> Возможность выгружать данные в CSV/JSON для анализа в собственных инструментах</li>
+                    <li style="margin-bottom: 8px;"><strong>Управление мониторингом:</strong> Вы можете добавлять/удалять конкурентов, изменять источники, настраивать правила алертов</li>
+                    <li style="margin-bottom: 8px;"><strong>Резервные копии:</strong> Полный доступ к истории данных — ничего не теряется</li>
+                    <li><strong>Интеграции:</strong> При необходимости мы можем подключить дополнительные каналы (email, Telegram и т.д.)</li>
+                </ul>
+                <p style="color: #666; font-size: 0.95em;"><em>Ежемесячная поддержка ($119) включает техническую помощь в управлении системой и optimизации под ваши процессы.</em></p>
+            </div>
+
+            <h2>❓ Вопросы о стоимости</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <strong>В: Почему CloudMax $100?</strong><br>
+                    О: CloudMax подписка нужна только при разработке, чтобы не упираться в лимиты токенов Claude и уложиться в 3-недельные сроки без ограничений.
+                </div>
+                <div class="faq-item">
+                    <strong>В: Что такое токены Claude?</strong><br>
+                    О: Токены — это единица обработки. 1 токен ≈ 4 символа. За каждый запрос к Claude платим за input и output токены. Смотрите раздел выше для полного объяснения.
+                </div>
+                <div class="faq-item">
+                    <strong>В: Почему Render.com дешевле?</strong><br>
+                    О: Потому что PostgreSQL БД включена в плане хостинга. Не нужно платить отдельно $25/месяц за управляемую БД.
+                </div>
+                <div class="faq-item">
+                    <strong>В: Могут ли расходы расти?</strong><br>
+                    О: Нет. $119/месяц — это фиксированная ставка. Даже если алертов будет больше, стоимость не меняется (Claude платит за использованные токены, которые уже в бюджет заложены).
+                </div>
+                <div class="faq-item">
+                    <strong>В: Можно ли оптимизировать расходы?</strong><br>
+                    О: После запуска можно переойти на Claude Haiku если качество анализа будет достаточным, но мы рекомендуем начать с Sonnet.
+                </div>
+            </div>
+
+            <h2>✅ Почему эта цена справедлива</h2>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                <h4 style="color: #16a34a; margin-bottom: 15px;">Альтернатива 1: Нанять аналитика</h4>
+                <p style="margin-bottom: 8px;">• Зарплата: $1,500-3,000/месяц</p>
+                <p style="margin-bottom: 8px;">• Постоянно занят</p>
+                <p style="margin-bottom: 8px;">• Охватывает только 1 рынок</p>
+                <p><strong>Стоимость в год: $18,000-36,000</strong></p>
+            </div>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                <h4 style="color: #16a34a; margin-bottom: 15px;">Альтернатива 2: Готовый инструмент</h4>
+                <p style="margin-bottom: 8px;">• Eikon, Factiva: $2,000-5,000/месяц</p>
+                <p style="margin-bottom: 8px;">• Переосложность для задачи</p>
+                <p style="margin-bottom: 8px;">• Долгая кривая обучения</p>
+                <p><strong>Стоимость в год: $24,000-60,000</strong></p>
+            </div>
+
+            <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                <h4 style="color: #7f1d1d; margin-bottom: 15px;">НАШЕ РЕШЕНИЕ</h4>
+                <p style="margin-bottom: 8px;">• Месяц 1: $937, затем $119/месяц</p>
+                <p style="margin-bottom: 8px;">• Специализировано под задачу</p>
+                <p style="margin-bottom: 8px;">• Работает 24/7 без перерывов</p>
+                <p style="margin-bottom: 8px;"><strong>Стоимость в год: $2,246</strong></p>
+                <p><strong style="color: #dc2626;">Экономия: от 80% до 95%</strong></p>
+            </div>
+
+        </div>
+
+        <div class="nav">
+            <a href="EXECUTIVE_SUMMARY.html">← Назад</a>
+            <a href="index.html">Главная</a>
+            <a href="PROPOSAL.html">Полное предложение →</a>
+        </div>
+
+        <footer>
+            <p><strong>Competitor Tracker MVP</strong> | Стоимость и процесс</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #aaa;">Действительно до 5 июня 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
