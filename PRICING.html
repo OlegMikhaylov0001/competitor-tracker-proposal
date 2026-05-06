@@ -532,6 +532,101 @@
                 • <strong>Включено в поддержку:</strong> Мониторинг работоспособности системы, резервные копии данных, обновления компонентов
             </div>
 
+            <h2>🔧 Что включено в $119/месяц (поддержка и обслуживание)</h2>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                <h4 style="color: #2563eb; margin-top: 0;">Включено (предсказуемо):</h4>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Инфраструктура:</strong> Хостинг на Render.com, БД, backups</li>
+                    <li><strong>Claude API:</strong> Обработка до 100-150 алертов/день</li>
+                    <li><strong>RSS мониторинг:</strong> Проверка 50+ источников каждый час</li>
+                    <li><strong>Мониторинг работоспособности:</strong> Uptime tracking, базовые алерты о сбоях</li>
+                    <li><strong>Техническое обслуживание:</strong> Обновление зависимостей, патчи безопасности (1-2 часа в месяц)</li>
+                    <li><strong>Обновление списка RSS источников:</strong> Добавление/удаление источников (по мере необходимости)</li>
+                </ul>
+            </div>
+
+            <h2>⚠️ Что НЕ включено (дополнительные расходы разработчика)</h2>
+
+            <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 25px 0; border-radius: 4px;">
+                <h4 style="color: #b45309; margin-top: 0;">Система не будет работать идеально — это нормально:</h4>
+                <p style="color: #666; font-size: 0.95em;">Любая живая система требует обслуживания. Вот что будут расходы разработчика:</p>
+
+                <div style="background: white; border-left: 4px solid #f59e0b; padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <strong style="color: #b45309;">📍 RSS источники сломаются или изменят формат</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 0.9em;">
+                        • RSS сайт иногда переходит на другой хостинг — feed меняет URL<br>
+                        • RSS структура меняется — нужно обновить парсер<br>
+                        • Примерно 1-2 раза в месяц: 1-2 часа работы
+                    </p>
+                </div>
+
+                <div style="background: white; border-left: 4px solid #f59e0b; padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <strong style="color: #b45309;">🐛 Claude анализ может давать странные результаты</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 0.9em;">
+                        • Ложные срабатывания (false positives)<br>
+                        • Нужно настраивать промпты, добавлять исключения<br>
+                        • Примерно 2-4 часа в месяц на оптимизацию
+                    </p>
+                </div>
+
+                <div style="background: white; border-left: 4px solid #f59e0b; padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <strong style="color: #b45309;">📊 Клиент захочет новые функции</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 0.9em;">
+                        • "Добавьте мониторинг LinkedIn"<br>
+                        • "Давайте делать анализ по-другому"<br>
+                        • "Нужен скрейпинг офсайтов блогов"<br>
+                        • Примерно 4-8 часов в месяц (отдельный договор)
+                    </p>
+                </div>
+
+                <div style="background: white; border-left: 4px solid #f59e0b; padding: 15px; margin: 15px 0; border-radius: 4px;">
+                    <strong style="color: #b45309;">🔄 Обновления и оптимизация</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 0.9em;">
+                        • Claude выпускает новые модели (нужно обновлять)<br>
+                        • Render.com может требовать миграции<br>
+                        • API меняют ограничения<br>
+                        • Примерно 2-4 часа в месяц
+                    </p>
+                </div>
+
+                <h4 style="color: #b45309; margin-top: 20px; margin-bottom: 10px;">💰 Итого дополнительные расходы разработчика:</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: #fff8e1;">
+                        <td style="padding: 12px; border: 1px solid #f59e0b;"><strong>Категория</strong></td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong>Часов в месяц</strong></td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong>Стоимость (@ $50/ч)</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #f59e0b;">Исправления RSS / парсинга</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">1-2 ч</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$50-100</td>
+                    </tr>
+                    <tr style="background: #fef3c7;">
+                        <td style="padding: 12px; border: 1px solid #f59e0b;">Оптимизация Claude анализа</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">2-4 ч</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$100-200</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #f59e0b;">Запросы на новые функции</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">2-4 ч</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$100-200</td>
+                    </tr>
+                    <tr style="background: #fef3c7;">
+                        <td style="padding: 12px; border: 1px solid #f59e0b;">Обновления и оптимизация</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">1-2 ч</td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$50-100</td>
+                    </tr>
+                    <tr style="background: #fff0e6; font-weight: bold;">
+                        <td style="padding: 12px; border: 2px solid #f59e0b;"><strong>ИТОГО В МЕСЯЦ</strong></td>
+                        <td style="padding: 12px; border: 2px solid #f59e0b; text-align: right;"><strong>6-12 часов</strong></td>
+                        <td style="padding: 12px; border: 2px solid #f59e0b; text-align: right;"><strong>$300-600</strong></td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 20px; color: #666; font-size: 0.95em;"><strong>Вывод:</strong> Реальная стоимость владения системой = $119 (инфраструктура) + $300-600 (ваш труд на поддержку). Это нормально для любой живой системы.</p>
+            </div>
+
             <h2>🎛️ Управление данными</h2>
 
             <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 25px 0; border-radius: 4px;">
