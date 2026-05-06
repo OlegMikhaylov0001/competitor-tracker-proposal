@@ -135,12 +135,80 @@
                 </ul>
             </div>
 
+            <h2>📊 Сравнение вариантов реализации</h2>
+
+            <table class="table-info" style="margin-bottom: 30px;">
+                <tr>
+                    <th style="background: #2563eb;">Характеристика</th>
+                    <th style="background: #f0f9ff; color: #2563eb;"><strong>MVP</strong> (Быстрый старт)</th>
+                    <th style="background: #fef3c7; color: #b45309;"><strong>Полная версия</strong> (All-in)</th>
+                </tr>
+                <tr>
+                    <td><strong>Конкуренты</strong></td>
+                    <td>16 конкурентов, 4 региона</td>
+                    <td>16 конкурентов, 4 региона</td>
+                </tr>
+                <tr>
+                    <td><strong>Категории событий</strong></td>
+                    <td>4 основные (Market, Campaign, Pricing, Product)</td>
+                    <td>8 полных (+ Visual Assets, Regulatory, Growth, Driver Ops)</td>
+                </tr>
+                <tr>
+                    <td><strong>RSS мониторинг</strong></td>
+                    <td>Каждый час</td>
+                    <td>Каждые 15-30 минут</td>
+                </tr>
+                <tr>
+                    <td><strong>Анализ алертов</strong></td>
+                    <td>Базовый (What/Why)</td>
+                    <td>Расширенный (What/Why/Impact/Actions)</td>
+                </tr>
+                <tr>
+                    <td><strong>Веб-панель</strong></td>
+                    <td>Базовая (просмотр, поиск)</td>
+                    <td>Advanced (фильтры, экспорт, статистика)</td>
+                </tr>
+                <tr>
+                    <td><strong>Каналы уведомлений</strong></td>
+                    <td>Slack</td>
+                    <td>Slack + Email + Telegram (опционально)</td>
+                </tr>
+                <tr>
+                    <td><strong>Интеграции</strong></td>
+                    <td>Slack API</td>
+                    <td>API для своих инструментов</td>
+                </tr>
+                <tr style="background: #f0f9ff;">
+                    <td><strong>Разработка</strong></td>
+                    <td>3 недели</td>
+                    <td>4-5 недель</td>
+                </tr>
+                <tr style="background: #f0f9ff;">
+                    <td><strong>Месяц 1</strong></td>
+                    <td><span data-price="month1">$2,019</span></td>
+                    <td>$2,519 (+$500)</td>
+                </tr>
+                <tr style="background: #f0f9ff;">
+                    <td><strong>Месяцы 2+</strong></td>
+                    <td><span data-price="monthly">$119</span>/месяц</td>
+                    <td><span data-price="monthly">$119</span>/месяц</td>
+                </tr>
+            </table>
+
             <h2>🎯 Ключевые решения</h2>
 
-            <h3>Вопрос 1: Одобрить ли стоимость?</h3>
+            <h3>Вопрос 1: Какой вариант выбираете?</h3>
             <div class="decision-box">
-                <h4>☐ ДА - Месяц 1: <span data-price="month1">$2,019</span>, затем <span data-price="monthly">$119</span>/месяц</h4>
-                <h4>☐ НЕТ - Требуется обсуждение (укажите почему)</h4>
+                <h4 style="margin-bottom: 10px;">Вариант реализации:</h4>
+                <h4>☐ MVP версия — быстрый старт<br>
+                <span style="font-size: 0.9em; color: #666; margin-left: 25px;">Месяц 1: <span data-price="month1">$2,019</span>, затем <span data-price="monthly">$119</span>/месяц<br>
+                (3 недели, 4 категории событий, RSS каждый час)</span></h4>
+
+                <h4>☐ Полная версия — All-in решение<br>
+                <span style="font-size: 0.9em; color: #666; margin-left: 25px;">Месяц 1: $2,519 (+$500), затем <span data-price="monthly">$119</span>/месяц<br>
+                (4-5 недель, все 8 категорий, real-time мониторинг, расширенная панель)</span></h4>
+
+                <h4 style="border-top: 1px solid #f59e0b; padding-top: 10px; margin-top: 10px;">☐ Хотим обсудить (укажите почему)</h4>
                 <input type="text" placeholder="Причины для обсуждения...">
             </div>
 
