@@ -45,6 +45,10 @@
         .timeline-day { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 15px; border-radius: 4px; text-align: center; }
         .timeline-day strong { color: #2563eb; display: block; font-size: 1.1em; margin-bottom: 5px; }
         .timeline-day p { font-size: 0.9em; color: #666; }
+        .nav-top { background: #f0f9ff; padding: 15px 40px; text-align: center; border-bottom: 2px solid #2563eb; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-top a { display: inline-block; padding: 8px 16px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 0.95em; transition: all 0.3s ease; }
+        .nav-top a:hover { background: #1e40af; transform: translateY(-2px); }
+        .nav-top a.active { background: #1e40af; font-weight: bold; }
         @media (max-width: 768px) { .timeline { grid-template-columns: repeat(3, 1fr); } header h1 { font-size: 2em; } }
         @media print { body { background: white; } .nav, .checkbox { display: none; } }
     </style>
@@ -56,6 +60,14 @@
             <h1>✅ Чеклист для клиента</h1>
             <p>Маршрут к решению и подписанию контракта</p>
         </header>
+
+        <div class="nav-top">
+            <a href="index.html">🏠 Главная</a>
+            <a href="EXECUTIVE_SUMMARY.html">1. Резюме</a>
+            <a href="PRICING.html">2. Стоимость</a>
+            <a href="PROPOSAL.html">3. Предложение</a>
+            <a href="CHECKLIST.html" class="active">4. Чеклист</a>
+        </div>
 
         <div class="content">
             <h2>📖 Как читать эти документы</h2>

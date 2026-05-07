@@ -40,6 +40,10 @@
         .invoice-line { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(37, 99, 235, 0.2); }
         .invoice-line:last-child { border: none; font-weight: bold; font-size: 1.1em; }
         .highlight { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 4px; margin: 25px 0; }
+        .nav-top { background: #f0f9ff; padding: 15px 40px; text-align: center; border-bottom: 2px solid #2563eb; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-top a { display: inline-block; padding: 8px 16px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 0.95em; transition: all 0.3s ease; }
+        .nav-top a:hover { background: #1e40af; transform: translateY(-2px); }
+        .nav-top a.active { background: #1e40af; font-weight: bold; }
         .nav { background: #f0f9ff; padding: 20px; margin: 30px 0 0 0; text-align: center; border-top: 2px solid #2563eb; }
         .nav a { display: inline-block; margin: 0 10px; padding: 10px 20px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; }
         .nav a:hover { background: #1e40af; }
@@ -55,6 +59,14 @@
             <h1>Стоимость и процесс</h1>
             <p>Полное объяснение инвестиции и реализации</p>
         </header>
+
+        <div class="nav-top">
+            <a href="index.html">🏠 Главная</a>
+            <a href="EXECUTIVE_SUMMARY.html">1. Резюме</a>
+            <a href="PRICING.html" class="active">2. Стоимость</a>
+            <a href="PROPOSAL.html">3. Предложение</a>
+            <a href="CHECKLIST.html">4. Чеклист</a>
+        </div>
 
         <div class="content">
             <h2>💰 Инвестиция</h2>

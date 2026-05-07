@@ -36,6 +36,10 @@
         .nav a:hover { background: #1e40af; }
         footer { background: #1e293b; color: white; padding: 25px 40px; text-align: center; }
         .highlight { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; border-radius: 4px; margin: 25px 0; }
+        .nav-top { background: #f0f9ff; padding: 15px 40px; text-align: center; border-bottom: 2px solid #2563eb; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-top a { display: inline-block; padding: 8px 16px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 0.95em; transition: all 0.3s ease; }
+        .nav-top a:hover { background: #1e40af; transform: translateY(-2px); }
+        .nav-top a.active { background: #1e40af; font-weight: bold; }
         ul { margin-left: 20px; }
         ol { margin-left: 20px; }
         @media (max-width: 768px) { .competitors-grid, .events-grid, .timeline { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
@@ -49,6 +53,14 @@
             <h1>Полное предложение</h1>
             <p>Детальное описание системы Competitor Tracker MVP</p>
         </header>
+
+        <div class="nav-top">
+            <a href="index.html">🏠 Главная</a>
+            <a href="EXECUTIVE_SUMMARY.html">1. Резюме</a>
+            <a href="PRICING.html">2. Стоимость</a>
+            <a href="PROPOSAL.html" class="active">3. Предложение</a>
+            <a href="CHECKLIST.html">4. Чеклист</a>
+        </div>
 
         <div class="content">
             <h2>📋 Краткое резюме</h2>
