@@ -197,6 +197,87 @@
                 </div>
             </div>
 
+            <h2>🎯 Варианты реализации</h2>
+
+            <h3>Этап 1: MVP — Быстрый запуск (2 недели)</h3>
+            <div style="background: #f0f9ff; border: 2px solid #2563eb; border-radius: 10px; padding: 25px; margin: 25px 0;">
+                <p style="margin-bottom: 15px;"><strong>Цель:</strong> Быстро запустить систему мониторинга, получить первый фидбек от команды, валидировать гипотезы</p>
+
+                <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Что включено:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Мониторинг 16 конкурентов в 4 регионах ✓</li>
+                        <li>Мониторинг 4 основных категорий событий (Расширение на рынки, Кампании, Цены, Продукт) ✓</li>
+                        <li>Real-time Slack алерты за 30-60 минут ✓</li>
+                        <li>Claude 3.5 Sonnet для анализа и приоритизации ✓</li>
+                        <li>RSS мониторинг 50+ источников каждый час ✓</li>
+                        <li>PostgreSQL база данных с историей всех алертов ✓</li>
+                        <li>Базовая инфраструктура на Render.com ✓</li>
+                    </ul>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: #e8f2ff;">
+                        <td style="padding: 12px; border: 1px solid #2563eb;"><strong>Разработка</strong></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; text-align: right;"><span data-price="development"></span></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; color: #666; font-size: 0.9em;">2 недели</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #2563eb;">CloudMax подписка</td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; text-align: right;"><span data-price="cloudmax"></span></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; color: #666; font-size: 0.9em;">Месяц 1</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #2563eb;">Инфраструктура месяц 1</td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; text-align: right;"><span data-price="monthly"></span></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; color: #666; font-size: 0.9em;">Включено</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td style="padding: 12px; border: 1px solid #2563eb;"><strong>ИТОГО Месяц 1</strong></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; text-align: right;"><strong><span data-price="month1"></span></strong></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb;"></td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td style="padding: 12px; border: 1px solid #2563eb;"><strong>ИТОГО Месяцы 2-12</strong></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb; text-align: right;"><strong><span data-price="monthly"></span>/месяц</strong></td>
+                        <td style="padding: 12px; border: 1px solid #2563eb;"></td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 15px; color: #666; font-size: 0.95em;"><strong>✓ Идеально для:</strong> Первоначального запуска, быстрого валидирования концепции, получения фидбека команды</p>
+            </div>
+
+            <h3>Этап 2: Опциональная веб-панель для анализа (доступна позже)</h3>
+            <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 10px; padding: 25px; margin: 25px 0;">
+                <p style="margin-bottom: 15px;"><strong>Когда:</strong> После запуска MVP, когда нужна визуализация и анализ исторических данных</p>
+
+                <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h4 style="color: #b45309; margin-bottom: 10px;">Что добавляется:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Веб-интерфейс для просмотра всех собранных алертов</li>
+                        <li>Поиск по ключевым словам и конкурентам</li>
+                        <li>Фильтрация по датам, категориям событий</li>
+                        <li>Экспорт данных в CSV для анализа</li>
+                        <li>Исторический анализ тренда активности конкурентов</li>
+                    </ul>
+                </div>
+
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: #fff8e1;">
+                        <td style="padding: 12px; border: 1px solid #f59e0b;"><strong>Веб-панель разработка</strong></td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><span data-price="phase_2_cost"></span></td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; color: #666; font-size: 0.9em;"><span data-price="phase_2_hours"></span> часов</td>
+                    </tr>
+                    <tr style="background: #fff8e1;">
+                        <td style="padding: 12px; border: 1px solid #f59e0b;"><strong>ДОПОЛНИТЕЛЬНЫЕ РАСХОДЫ</strong></td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong><span data-price="phase_2_cost"></span></strong></td>
+                        <td style="padding: 12px; border: 1px solid #f59e0b;"></td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 15px; color: #b45309; font-size: 0.95em;"><strong>Примечание:</strong> Может быть добавлена после запуска MVP при необходимости визуализации и расширенного анализа данных</p>
+            </div>
+
             <h2>🔧 Что включено в <span data-price="monthly"></span>/месяц (поддержка и обслуживание)</h2>
 
             <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 25px 0; border-radius: 4px;">
