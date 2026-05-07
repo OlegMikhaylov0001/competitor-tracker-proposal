@@ -13,13 +13,13 @@ const PRICING = {
   CLOUDMAX_MONTHLY: 100,               // CloudMax подписка (один раз)
   INFRASTRUCTURE_MONTHLY: 119,         // Ежемесячные расходы на инфраструктуру
 
-  // ========== CALCULATED VALUES ==========
+  // ========== CALCULATED VALUES - MVP ==========
   get DEVELOPMENT_COST() {
-    return this.HOURLY_RATE * this.DEVELOPMENT_HOURS;  // $1,800
+    return this.HOURLY_RATE * this.DEVELOPMENT_HOURS;  // $1,200
   },
 
   get MONTH_1_TOTAL() {
-    return this.DEVELOPMENT_COST + this.CLOUDMAX_MONTHLY + this.INFRASTRUCTURE_MONTHLY;  // $2,019
+    return this.DEVELOPMENT_COST + this.CLOUDMAX_MONTHLY + this.INFRASTRUCTURE_MONTHLY;  // $1,419
   },
 
   get YEAR_1_MONTHS_2_12() {
@@ -27,15 +27,20 @@ const PRICING = {
   },
 
   get YEAR_1_TOTAL() {
-    return this.MONTH_1_TOTAL + this.YEAR_1_MONTHS_2_12;  // $3,328
+    return this.MONTH_1_TOTAL + this.YEAR_1_MONTHS_2_12;  // $2,728
   },
 
   get MONTHLY_AVERAGE() {
-    return Math.round(this.YEAR_1_TOTAL / 12);  // $277
+    return Math.round(this.YEAR_1_TOTAL / 12);  // $227
   },
 
+  // ========== PHASE 2 ==========
   get PHASE_2_COST() {
     return this.HOURLY_RATE * this.DEVELOPMENT_HOURS_PHASE_2;  // $600
+  },
+
+  get YEAR_1_WITH_PHASE_2() {
+    return this.YEAR_1_TOTAL + this.PHASE_2_COST;  // $3,328
   },
 
   // ========== COMPONENT BREAKDOWN (в часах) ==========
@@ -97,7 +102,7 @@ const PRICING = {
   // ========== HELPER FUNCTIONS ==========
 
   /**
-   * Форматирует число как цену: 1800 -> $1,800
+   * Форматирует число как цену: 1200 -> $1,200
    */
   formatPrice(amount) {
     return '$' + amount.toLocaleString('en-US');
@@ -174,6 +179,7 @@ function updatePrices() {
     'month1': PRICING.formatPrice(PRICING.MONTH_1_TOTAL),
     'monthly': PRICING.formatPrice(PRICING.INFRASTRUCTURE_MONTHLY),
     'year1': PRICING.formatPrice(PRICING.YEAR_1_TOTAL),
+    'year1_with_phase2': PRICING.formatPrice(PRICING.YEAR_1_WITH_PHASE_2),
     'development': PRICING.formatPrice(PRICING.DEVELOPMENT_COST),
     'cloudmax': PRICING.formatPrice(PRICING.CLOUDMAX_MONTHLY),
     'hourly_rate': PRICING.HOURLY_RATE,
@@ -182,7 +188,8 @@ function updatePrices() {
     'mandatory_infra': PRICING.formatPrice(PRICING.MANDATORY_INFRASTRUCTURE),
     'optional_infra': PRICING.formatPrice(PRICING.OPTIONAL_INFRASTRUCTURE),
     'phase_2_cost': PRICING.formatPrice(PRICING.PHASE_2_COST),
-    'phase_2_hours': PRICING.DEVELOPMENT_HOURS_PHASE_2
+    'phase_2_hours': PRICING.DEVELOPMENT_HOURS_PHASE_2,
+    'months_2_12_cost': PRICING.formatPrice(PRICING.YEAR_1_MONTHS_2_12)
   };
 
   priceElements.forEach(element => {
