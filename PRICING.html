@@ -215,53 +215,69 @@
             <h3>Инфраструктура месяца 1</h3>
             <table>
                 <tr>
-                    <th style="width: 40%;">Компонент</th>
+                    <th style="width: 10%;">Тип</th>
+                    <th style="width: 35%;">Компонент</th>
                     <th style="width: 20%;">Стоимость</th>
-                    <th style="width: 40%;">Описание</th>
+                    <th style="width: 35%;">Описание</th>
                 </tr>
                 <!-- ОБЯЗАТЕЛЬНЫЕ -->
                 <tr style="background: #f0fdf4;">
+                    <td style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
                     <td><strong>Claude 3.5 Sonnet API</strong></td>
                     <td class="amount"><strong>$100-150</strong></td>
                     <td>100-150 алертов/день (~7-8 млн токенов/месяц с Prompt Caching). Точная стоимость зависит от объема и оптимизации</td>
                 </tr>
                 <tr style="background: #f0fdf4;">
+                    <td style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
                     <td><strong>Render.com (Node.js + PostgreSQL)</strong></td>
                     <td class="amount"><strong class="infra-render">$12</strong></td>
                     <td>Серверы и база данных — обязательно для работы</td>
                 </tr>
                 <tr style="background: #f0fdf4;">
+                    <td style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
                     <td><strong>Домен и SSL</strong></td>
                     <td class="amount"><strong class="infra-domain">$1</strong></td>
                     <td>Домен (~$10/год) + Let's Encrypt (бесплатно)</td>
                 </tr>
-                <tr style="background: #f0fdf4;">
-                    <td><strong style="color: #16a34a;">✓ ОБЯЗАТЕЛЬНО — итого</strong></td>
-                    <td class="amount"><strong data-price="mandatory_infra" style="color: #16a34a;">$94</strong></td>
+                <tr style="background: #dcfce7; border-top: 2px solid #16a34a;">
                     <td></td>
+                    <td><strong style="color: #16a34a;">ОБЯЗАТЕЛЬНО — ИТОГО</strong></td>
+                    <td class="amount"><strong style="color: #16a34a; font-size: 1.1em;">$113-163</strong></td>
+                    <td style="color: #16a34a;"><strong>Минимум для работы системы</strong></td>
                 </tr>
                 <!-- ОПЦИОНАЛЬНЫЕ -->
                 <tr style="background: #fef3c7;">
+                    <td style="text-align: center; color: #b45309;"><strong>⊕</strong></td>
                     <td>RSS мониторинг</td>
                     <td class="amount"><span class="infra-rss">$15</span> или бесплатно</td>
                     <td>Платная служба (Feedly) или бесплатно (Feedburner, custom)</td>
                 </tr>
                 <tr style="background: #fef3c7;">
+                    <td style="text-align: center; color: #b45309;"><strong>⊕</strong></td>
                     <td>Мониторинг & Uptime</td>
                     <td class="amount"><span class="infra-monitoring">$15</span> или встроено</td>
                     <td>Uptime Robot ($15) или встроенный мониторинг Render.com (включено в $12)</td>
                 </tr>
-                <tr style="background: #fef3c7;">
-                    <td><strong style="color: #b45309;">⊕ ОПЦИОНАЛЬНЫЕ — рекомендуемые</strong></td>
-                    <td class="amount"><strong data-price="optional_infra" style="color: #b45309;">$30</strong></td>
-                    <td>Для надежной системы в боевых условиях</td>
+                <tr style="background: #fef9e7; border-top: 2px solid #f59e0b;">
+                    <td></td>
+                    <td><strong style="color: #b45309;">РЕКОМЕНДУЕМЫЕ ОПЦИОНАЛЬНЫЕ</strong></td>
+                    <td class="amount"><strong style="color: #b45309; font-size: 1.1em;">+$30</strong></td>
+                    <td style="color: #b45309;"><strong>Для надежности в production</strong></td>
                 </tr>
-                <tr style="background: #fef3c7;">
-                    <td><strong style="color: #9a6708;">⊕ ОПЦИОНАЛЬНЫЕ — минимум</strong></td>
-                    <td class="amount"><strong style="color: #9a6708;">$0</strong></td>
-                    <td>Если использовать бесплатные альтернативы</td>
+                <tr style="background: #fef9e7;">
+                    <td></td>
+                    <td><strong style="color: #9a6708;">ОПЦИОНАЛЬНЫЕ (минимум)</strong></td>
+                    <td class="amount"><strong style="color: #9a6708; font-size: 1.1em;">+$0</strong></td>
+                    <td style="color: #9a6708;"><strong>Если использовать бесплатные альтернативы</strong></td>
                 </tr>
             </table>
+
+            <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin-top: 25px; border-radius: 4px;">
+                <h4 style="margin-top: 0; color: #2563eb;">📊 Итоговые варианты инфраструктуры в месяц:</h4>
+                <p style="margin: 12px 0;"><span style="background: #dcfce7; padding: 8px 12px; border-radius: 4px; color: #16a34a;"><strong>✓ Минимум (только обязательное):</strong> $113-163/месяц</span></p>
+                <p style="margin: 12px 0;"><span style="background: #fef9e7; padding: 8px 12px; border-radius: 4px; color: #b45309;"><strong>⊕ Рекомендуемое (наш расчет):</strong> $143-193/месяц</span></p>
+                <p style="margin: 12px 0;"><span style="background: #fef9e7; padding: 8px 12px; border-radius: 4px; color: #9a6708;"><strong>⊕ Экономный вариант:</strong> $113-163/месяц (с бесплатными альтернативами)</span></p>
+            </div>
 
             <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin-top: 25px; border-radius: 4px;">
                 <h4 style="margin-top: 0; color: #2563eb;">Диапазон инфраструктурных расходов:</h4>
@@ -286,7 +302,7 @@
                 </tr>
                 <tr>
                     <td>Инфраструктура</td>
-                    <td class="amount" data-price="monthly">$119</td>
+                    <td class="amount" data-price="monthly"></td>
                 </tr>
                 <tr style="background: #f0fdf4; font-weight: bold;">
                     <td>МЕСЯЦ 1 ПОЛНАЯ СТОИМОСТЬ</td>
@@ -325,21 +341,23 @@
                     <p>1 токен ≈ 4 символа текста. Claude API считает токены для input и output</p>
                 </div>
                 <div class="flow">
-                    <strong>🔍 Процесс обработки алерта:</strong>
-                    <p>• Получаем статью (~500-1000 слов) = ~300-500 токенов<br>
-                    • Отправляем Claude на анализ = ~500 токенов input<br>
-                    • Получаем рекомендации = ~200 токенов output<br>
-                    • ИТОГО на алерт: ~700 токенов</p>
+                    <strong>🔍 Процесс обработки алерта (реалистичный расчет):</strong>
+                    <p>• Получаем статью (~1000-2000 слов) = ~700-1000 токенов<br>
+                    • Отправляем Claude на анализ с контекстом = ~700-800 токенов input<br>
+                    • Получаем рекомендации и анализ = ~200-300 токенов output<br>
+                    • <strong>ИТОГО на алерт: ~1,700 токенов</strong> (в 2.5 раза больше предварительной оценки)</p>
                 </div>
                 <div class="flow">
                     <strong>📈 Ежедневные расходы:</strong>
-                    <p>100-150 алертов/день × 700 токенов = 70,000-105,000 токенов/день</p>
+                    <p>100-150 алертов/день × 1,700 токенов = 170,000-255,000 токенов/день<br>
+                    За месяц (30 дней): ~5.1-7.65 млн токенов</p>
                 </div>
                 <div class="flow">
                     <strong>💰 Claude 3.5 Sonnet цена:</strong>
-                    <p>• Input токены: $3 за 1 млн<br>
-                    • Output токены: $15 за 1 млн<br>
-                    • Результат: ~$80-90/месяц для 100-150 алертов/день</p>
+                    <p><strong>Без оптимизации:</strong> ~$150-180/месяц<br>
+                    <strong>С Prompt Caching:</strong> ~$100-120/месяц (кэш экономит ~40-50%)<br>
+                    <strong>С Batch API (60мин задержка):</strong> ~$75-90/месяц (-50% скидка)<br><br>
+                    💡 <strong>Рекомендуемый расчет:</strong> $100-150/месяц (с применением Prompt Caching)</p>
                 </div>
                 <div class="flow">
                     <strong>✅ Почему 3.5 Sonnet?</strong>
@@ -535,7 +553,7 @@
                 </div>
                 <div class="invoice-line">
                     <span>ИТОГО ЕЖЕМЕСЯЧНО:</span>
-                    <span>$119</span>
+                    <span data-price="monthly"></span>
                 </div>
             </div>
 
@@ -547,7 +565,7 @@
                 • <strong>Включено в поддержку:</strong> Мониторинг работоспособности системы, резервные копии данных, обновления компонентов
             </div>
 
-            <h2>🔧 Что включено в $119/месяц (поддержка и обслуживание)</h2>
+            <h2>🔧 Что включено в <span data-price="monthly"></span>/месяц (поддержка и обслуживание)</h2>
 
             <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 25px 0; border-radius: 4px;">
                 <h4 style="color: #2563eb; margin-top: 0;">Включено (предсказуемо):</h4>
@@ -639,7 +657,7 @@
                     </tr>
                 </table>
 
-                <p style="margin-top: 20px; color: #666; font-size: 0.95em;"><strong>Вывод:</strong> Реальная стоимость владения системой = $119 (инфраструктура) + $300-600 (ваш труд на поддержку). Это нормально для любой живой системы.</p>
+                <p style="margin-top: 20px; color: #666; font-size: 0.95em;"><strong>Вывод:</strong> Реальная стоимость владения системой = <span data-price="monthly"></span> (инфраструктура) + $300-600 (ваш труд на поддержку). Это нормально для любой живой системы.</p>
             </div>
 
             <h2>🎛️ Управление данными</h2>
@@ -654,7 +672,7 @@
                     <li style="margin-bottom: 8px;"><strong>Резервные копии:</strong> Полный доступ к истории данных — ничего не теряется</li>
                     <li><strong>Интеграции:</strong> При необходимости мы можем подключить дополнительные каналы (email, Telegram и т.д.)</li>
                 </ul>
-                <p style="color: #666; font-size: 0.95em;"><em>Ежемесячная поддержка ($119) включает техническую помощь в управлении системой и optimизации под ваши процессы.</em></p>
+                <p style="color: #666; font-size: 0.95em;"><em>Ежемесячная поддержка (<span data-price="monthly"></span>) включает техническую помощь в управлении системой и optimизации под ваши процессы.</em></p>
             </div>
 
             <h2>❓ Вопросы о стоимости</h2>
@@ -664,8 +682,8 @@
                     О: CloudMax подписка нужна только при разработке, чтобы не упираться в лимиты токенов Claude и уложиться в 2-недельные сроки без ограничений.
                 </div>
                 <div class="faq-item">
-                    <strong>В: Что такое токены Claude?</strong><br>
-                    О: Токены — это единица обработки. 1 токен ≈ 4 символа. За каждый запрос к Claude платим за input и output токены. Смотрите раздел выше для полного объяснения.
+                    <strong>В: Что такое токены Claude и почему они дорогие?</strong><br>
+                    О: Токены — это единица обработки. 1 токен ≈ 4 символа. Каждый алерт требует ~1,700 токенов input/output (~7-8 млн/месяц при 100-150 алертов/день). Цена: Input $3/млн, Output $15/млн. Оптимизируется через Prompt Caching (~40% экономия). Подробно в разделе выше.
                 </div>
                 <div class="faq-item">
                     <strong>В: Почему Render.com дешевле?</strong><br>
@@ -673,7 +691,7 @@
                 </div>
                 <div class="faq-item">
                     <strong>В: Могут ли расходы расти?</strong><br>
-                    О: Нет. $119/месяц — это фиксированная ставка. Даже если алертов будет больше, стоимость не меняется (Claude платит за использованные токены, которые уже в бюджет заложены).
+                    О: Нет. <span data-price="monthly"></span>/месяц — это фиксированная ставка. Даже если алертов будет больше, стоимость не меняется (Claude платит за использованные токены, которые уже в бюджет заложены).
                 </div>
                 <div class="faq-item">
                     <strong>В: Можно ли оптимизировать расходы?</strong><br>

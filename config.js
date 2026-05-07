@@ -11,11 +11,18 @@ const PRICING = {
   DEVELOPMENT_HOURS: 80,               // Часы разработки MVP (3 недели) - без веб-панели
   DEVELOPMENT_HOURS_PHASE_2: 40,       // Часы разработки Phase 2 (веб-панель)
   CLOUDMAX_MONTHLY: 100,               // CloudMax подписка (один раз)
-  INFRASTRUCTURE_MONTHLY: 119,         // Ежемесячные расходы на инфраструктуру
 
   // ========== CALCULATED VALUES - MVP ==========
   get DEVELOPMENT_COST() {
     return this.HOURLY_RATE * this.DEVELOPMENT_HOURS;  // $1,200
+  },
+
+  get INFRASTRUCTURE_MONTHLY() {
+    return this.INFRASTRUCTURE.render.cost +
+           this.INFRASTRUCTURE.claude_api.cost +
+           this.INFRASTRUCTURE.rss.cost +
+           this.INFRASTRUCTURE.monitoring.cost +
+           this.INFRASTRUCTURE.domain.cost;  // Динамический расчет
   },
 
   get MONTH_1_TOTAL() {
