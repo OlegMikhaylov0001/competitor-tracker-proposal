@@ -192,6 +192,18 @@
                 </div>
             </div>
 
+            <div style="background: #f0f9ff; border: 1px solid #2563eb; border-radius: 8px; padding: 20px; margin: 25px 0;">
+                <h4 style="color: #2563eb; margin-top: 0;">📌 Важно про Point Person</h4>
+                <p style="margin-bottom: 12px; color: #333;">Ответственное лицо со стороны клиента должно иметь:</p>
+                <ul style="margin-left: 20px; margin-bottom: 0; color: #666; font-size: 0.95em;">
+                    <li><strong>Права на установку приложений в Slack</strong> (для установки нашего бота в первый день)</li>
+                    <li><strong>Быстрый доступ к администратору Slack</strong> (если личные права ограничены)</li>
+                    <li><strong>Возможность принимать решения</strong> о конфигурации и настройке</li>
+                    <li><strong>Контакт для срочных вопросов</strong> (WhatsApp, email, Slack DM)</li>
+                </ul>
+                <p style="margin-top: 12px; margin-bottom: 0; color: #2563eb; font-size: 0.9em;"><strong>💡 Совет:</strong> Это сэкономит вам 2-3 дня на первой неделе разработки. Если points person занят — уточните это заранее.</p>
+            </div>
+
             <h2>💡 Понимание реальной стоимости (важно!)</h2>
 
             <div style="background: #fef3c7; border: 2px solid #f59e0b; border-radius: 10px; padding: 25px; margin: 25px 0;">
@@ -263,14 +275,14 @@
             <h2>🎯 Что включено в пакет</h2>
 
             <div class="section-box" style="background: #f0fdf4; border-left-color: #16a34a;">
-                <h4 style="color: #16a34a;">✅ Разработка включает (<span data-price="development"></span> - <span data-price="dev_hours"></span> часов × <span data-price="hourly_rate"></span>/час):</h4>
+                <h4 style="color: #16a34a;">✅ MVP-разработка включает (<span data-price="development"></span> - <span data-price="dev_hours"></span> часов):</h4>
                 <ul>
                     <li>Полная интеграция со Slack (16 часов)</li>
                     <li>Система мониторинга новостей 24/7 (24 часа)</li>
-                    <li>Веб-панель для отслеживания (40 часов)</li>
-                    <li>PostgreSQL база данных (12 часов)</li>
-                    <li>Claude 3.5 Sonnet API интеграция (16 часов)</li>
+                    <li>PostgreSQL база данных с резервными копиями (12 часов)</li>
+                    <li>Claude 3.5 Sonnet API конфигурация (16 часов)</li>
                     <li>Полное тестирование и QA (12 часов)</li>
+                    <li style="color: #666; font-size: 0.95em; margin-top: 10px;"><strong>Веб-панель для анализа:</strong> Опционально в Фазе 2 (<span data-price="phase_2_cost"></span>, <span data-price="phase_2_hours"></span> часов) — доступна позже при необходимости</li>
                 </ul>
             </div>
 
@@ -286,11 +298,12 @@
             </div>
 
             <div class="section-box" style="background: #f0fdf4; border-left-color: #16a34a;">
-                <h4 style="color: #16a34a;">✅ CloudMax ($100) включает:</h4>
+                <h4 style="color: #16a34a;">✅ CloudMax (<span data-price="cloudmax"></span>) — только при разработке:</h4>
                 <ul>
                     <li>Подписка для разработки без ограничений на токены</li>
                     <li>Чтобы уложиться в 2-недельные сроки</li>
-                    <li>Разовая стоимость при разработке</li>
+                    <li><strong style="color: #16a34a;">⚠️ Разовая стоимость при разработке (НЕ скрытая подписка)</strong></li>
+                    <li>После запуска переходим на Direct API Anthropic с Prompt Caching (более эффективно)</li>
                 </ul>
             </div>
 
@@ -326,6 +339,19 @@
                 <h3 style="color: #b45309; margin-bottom: 15px;">Когда всё готово:</h3>
                 <p style="font-size: 1.1em;">Свяжитесь через WhatsApp с point person и передайте принятое решение и необходимые детали.</p>
                 <p style="margin-top: 15px; color: #b45309;"><strong>Время до запуска: 2 недели от дня подписания контракта</strong></p>
+            </div>
+
+            <div style="background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 25px; margin: 25px 0;">
+                <h3 style="color: #16a34a; margin-top: 0;">🔓 Гибкость контракта (важно!)</h3>
+                <p style="margin-bottom: 15px; color: #333;"><strong>Контракт: Только ежемесячный, можно отменить в любой момент</strong></p>
+                <ul style="margin-left: 20px; color: #333;">
+                    <li><strong>Нет «vendor lock-in»:</strong> Полный доступ ко всем вашим данным (экспорт в CSV/JSON)</li>
+                    <li><strong>Гибкость:</strong> Отмена подписки без штрафов и долгосрочных обязательств</li>
+                    <li><strong>Прозрачность:</strong> Все расходы показаны, нет скрытых платежей</li>
+                    <li><strong>Масштабирование:</strong> Можете добавить Phase 2 (веб-панель) в любой момент</li>
+                    <li><strong>Долгосрочный партнер:</strong> Наше благополучие зависит от вашей успешности</li>
+                </ul>
+                <p style="margin-top: 15px; margin-bottom: 0; color: #16a34a; font-size: 0.95em;"><strong>В 2026 году клиенты боятся зависимости от одного поставщика.</strong> Мы предлагаем полную гибкость, как у стартапов, а не как у корпоративных гигантов (Reuters, Bloomberg). Это делает нас конкурентным выбором.</p>
             </div>
         </div>
 
