@@ -84,9 +84,9 @@ const PRICING = {
   // ========== INFRASTRUCTURE BREAKDOWN (ежемесячно) ==========
   INFRASTRUCTURE: {
     render: { cost: 12, name: 'Render.com (Node.js + PostgreSQL)', mandatory: true },
-    claude_api: { cost: 81, name: 'Claude 3.5 Sonnet API (100-150 алертов/день)', mandatory: true },
+    claude_api: { cost: 125, name: 'Claude 3.5 Sonnet API (100-150 алертов/день, ~7-8 млн токенов с Prompt Caching)', mandatory: true, min: 100, max: 150 },
     rss: { cost: 15, name: 'RSS мониторинг (50+ источников)', mandatory: false },
-    monitoring: { cost: 10, name: 'Мониторинг & uptime', mandatory: false },
+    monitoring: { cost: 15, name: 'Мониторинг & uptime', mandatory: false },
     domain: { cost: 1, name: 'Домен и сертификаты', mandatory: true }
   },
 
