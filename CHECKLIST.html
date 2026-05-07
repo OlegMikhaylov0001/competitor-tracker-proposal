@@ -14,10 +14,10 @@
         h2 { color: #2563eb; font-size: 1.8em; margin: 30px 0 20px 0; border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
         h3 { color: #1e40af; font-size: 1.3em; margin: 20px 0 15px 0; }
         .checklist { background: #f0fdf4; border: 2px solid #16a34a; border-radius: 10px; padding: 25px; margin: 20px 0; }
-        .checklist-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(22, 163, 74, 0.2); }
+        .checklist-item { display: flex; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(22, 163, 74, 0.2); }
         .checklist-item:last-child { border-bottom: none; }
-        .checkbox { width: 24px; height: 24px; border: 2px solid #16a34a; border-radius: 4px; margin-right: 15px; flex-shrink: 0; cursor: pointer; }
-        .checklist-item label { cursor: pointer; flex-grow: 1; }
+        .checklist-item label { flex-grow: 1; margin-left: 10px; }
+        .checklist-item label:before { content: "✓ "; color: #16a34a; font-weight: bold; margin-left: -10px; margin-right: 5px; }
         .section-box { background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 20px 0; border-radius: 4px; }
         .section-box h4 { color: #2563eb; margin-bottom: 15px; font-size: 1.1em; }
         .section-box ul { list-style: none; margin-left: 0; }
@@ -50,7 +50,7 @@
         .nav-top a:hover { background: #1e40af; transform: translateY(-2px); }
         .nav-top a.active { background: #1e40af; font-weight: bold; }
         @media (max-width: 768px) { .timeline { grid-template-columns: repeat(3, 1fr); } header h1 { font-size: 2em; } }
-        @media print { body { background: white; } .nav, .checkbox { display: none; } }
+        @media print { body { background: white; } .nav { display: none; } }
     </style>
     <script src="config.js"></script>
 </head>
@@ -147,9 +147,9 @@
 
             <h3>Вопрос 1: Когда запускать?</h3>
             <div class="decision-box">
-                <h4>☐ АСAP - 3 недели</h4>
-                <h4>☐ В течение месяца</h4>
-                <h4>☐ После Q2</h4>
+                <h4>▶ АСAP - 3 недели</h4>
+                <h4>▶ В течение месяца</h4>
+                <h4>▶ После Q2</h4>
             </div>
 
             <h3>Вопрос 2: Кто будет point person?</h3>
@@ -164,27 +164,21 @@
             <h3>Бизнес-требования</h3>
             <div class="checklist">
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Интеграция со Slack соответствует нашим нуждам</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>4 региона отслеживания правильные (ЛАТАМ, ЮВА, Африка/МЕА, СНГ)</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Список из 16 конкурентов полный и актуальный</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
-                    <label>8 категорий событий и ключевые слова покрывают все нужные сценарии</label>
+                    <label>4 основные категории событий и ключевые слова покрывают все нужные сценарии</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Визуальный мониторинг (логотипы, брендовые активы) подходит</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>График реализации (3 недели) нас устраивает</label>
                 </div>
             </div>
@@ -192,23 +186,18 @@
             <h3>Финансовые требования</h3>
             <div class="checklist">
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Бюджет одобрен для месяца 1 ($2,019)</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Ежемесячная стоимость $119 приемлема</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Модель оплаты ($2,019 месяц 1, затем $119/месяц) понятна</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Нет скрытых расходов или сюрпризов</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>ROI расписание (2-3 месяца) приемлемо</label>
                 </div>
             </div>
@@ -216,23 +205,18 @@
             <h3>Технические требования</h3>
             <div class="checklist">
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Render.com инфраструктура приемлема</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Claude 3.5 Sonnet API качество одобрено</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Стандарты безопасности/GDPR соответствуют</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Slack интеграция совместима с нашей системой</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Модель поддержки нас устраивает</label>
                 </div>
             </div>
@@ -240,19 +224,15 @@
             <h3>Операционные требования</h3>
             <div class="checklist">
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Доступ администратора Slack готов</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Point person назначен</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>График обучения команды определён</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Процесс обратной связи установлен</label>
                 </div>
             </div>
@@ -339,10 +319,10 @@
 
             <h3>Вопрос для вашей команды:</h3>
             <div class="decision-box">
-                <h4>☐ Вариант A: RSS ленты (рекомендуется)</h4>
+                <h4>▶ Вариант A: RSS ленты (рекомендуется)</h4>
                 <p style="font-size: 0.9em; margin-left: 25px;">Стабильный, дешев в поддержке, быстрый старт (3 недели)</p>
 
-                <h4>☐ Вариант B: RSS + Web Scraping</h4>
+                <h4>▶ Вариант B: RSS + Web Scraping</h4>
                 <p style="font-size: 0.9em; margin-left: 25px;">Полнее, но требует больше поддержки (+$300-600/месяц разработчика)</p>
 
                 <h4>☐ Хотим обсудить сначала</h4>
@@ -437,35 +417,27 @@
             <h2>📋 Финальный чеклист</h2>
             <div class="checklist">
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Прочитали <a href="EXECUTIVE_SUMMARY.html" style="color: #2563eb; text-decoration: underline;">Краткое резюме</a></label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Прочитали <a href="PRICING.html" style="color: #2563eb; text-decoration: underline;">Стоимость и процесс</a></label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Прочитали <a href="PROPOSAL.html" style="color: #2563eb; text-decoration: underline;">Полное предложение</a></label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Внутреннее обсуждение завершено</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Финансы одобрили бюджет</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Назначен point person</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Slack workspace подготовлен</label>
                 </div>
                 <div class="checklist-item">
-                    <div class="checkbox"></div>
                     <label>Готовы подписать контракт</label>
                 </div>
             </div>

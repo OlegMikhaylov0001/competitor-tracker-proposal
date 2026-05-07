@@ -69,11 +69,20 @@ const PRICING = {
 
   // ========== INFRASTRUCTURE BREAKDOWN (ежемесячно) ==========
   INFRASTRUCTURE: {
-    render: { cost: 12, name: 'Render.com (Node.js + PostgreSQL)' },
-    claude_api: { cost: 81, name: 'Claude 3.5 Sonnet API (100-150 алертов/день)' },
-    rss: { cost: 15, name: 'RSS мониторинг (50+ источников)' },
-    monitoring: { cost: 10, name: 'Мониторинг & uptime' },
-    domain: { cost: 1, name: 'Домен и сертификаты' }
+    render: { cost: 12, name: 'Render.com (Node.js + PostgreSQL)', mandatory: true },
+    claude_api: { cost: 81, name: 'Claude 3.5 Sonnet API (100-150 алертов/день)', mandatory: true },
+    rss: { cost: 15, name: 'RSS мониторинг (50+ источников)', mandatory: false },
+    monitoring: { cost: 10, name: 'Мониторинг & uptime', mandatory: false },
+    domain: { cost: 1, name: 'Домен и сертификаты', mandatory: true }
+  },
+
+  // ========== INFRASTRUCTURE TOTALS ==========
+  get MANDATORY_INFRASTRUCTURE() {
+    return this.INFRASTRUCTURE.render.cost + this.INFRASTRUCTURE.claude_api.cost + this.INFRASTRUCTURE.domain.cost;  // $94
+  },
+
+  get OPTIONAL_INFRASTRUCTURE() {
+    return this.INFRASTRUCTURE.rss.cost + this.INFRASTRUCTURE.monitoring.cost;  // $25
   },
 
   // ========== HELPER FUNCTIONS ==========
@@ -160,7 +169,9 @@ function updatePrices() {
     'cloudmax': PRICING.formatPrice(PRICING.CLOUDMAX_MONTHLY),
     'hourly_rate': PRICING.HOURLY_RATE,
     'dev_hours': PRICING.DEVELOPMENT_HOURS,
-    'avg_monthly': PRICING.formatPrice(PRICING.MONTHLY_AVERAGE)
+    'avg_monthly': PRICING.formatPrice(PRICING.MONTHLY_AVERAGE),
+    'mandatory_infra': PRICING.formatPrice(PRICING.MANDATORY_INFRASTRUCTURE),
+    'optional_infra': PRICING.formatPrice(PRICING.OPTIONAL_INFRASTRUCTURE)
   };
 
   priceElements.forEach(element => {
