@@ -254,28 +254,6 @@
                 </div>
             </div>
 
-            <h2>✅ Почему это выгодно?</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin: 25px 0;">
-                <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; border-radius: 8px;">
-                    <h4 style="color: #16a34a; margin-top: 0;">vs Аналитик в штате</h4>
-                    <p style="color: #666; margin: 8px 0;">Зарплата: $2,000+/месяц</p>
-                    <p style="color: #666; margin: 0;">Стоимость в год: $24,000+</p>
-                </div>
-                <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; border-radius: 8px;">
-                    <h4 style="color: #16a34a; margin-top: 0;">vs Готовые решения (Eikon, Factiva)</h4>
-                    <p style="color: #666; margin: 8px 0;">Стоимость: $2,000-5,000/месяц</p>
-                    <p style="color: #666; margin: 0;">Стоимость в год: $24,000-60,000</p>
-                </div>
-                <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 20px; border-radius: 8px;">
-                    <h4 style="color: #7f1d1d; margin-top: 0;">НАШЕ РЕШЕНИЕ</h4>
-                    <p style="color: #333; margin: 8px 0;"><strong>Месяц 1:</strong> <span data-price="month1"></span></p>
-                    <p style="color: #333; margin: 8px 0;"><strong>Месяц 2+:</strong> <span data-price="monthly"></span>/месяц</p>
-                    <p style="color: #333; margin: 0;"><strong>Год 1:</strong> <span data-price="year1"></span></p>
-                    <p style="color: #666; font-size: 0.9em; margin-top: 12px;"><strong>Экономия:</strong> Система работает 24/7, освобождает одного сотрудника на 5-10 часов в неделю</p>
-                </div>
-            </div>
-
             <h2>❓ Часто задаваемые вопросы</h2>
             <div class="faq">
                 <div class="faq-item">
@@ -292,84 +270,36 @@
                 </div>
                 <div class="faq-item">
                     <strong>В: Почему CloudMax $100?</strong><br>
-                    О: CloudMax подписка нужна только при разработке (2 недели), чтобы не упираться в лимиты токенов Claude. После запуска система переходит на прямой API Anthropic с Prompt Caching для 40-50% экономии. Подробности в разделе <a href="IMPLEMENTATION.html">Реализация</a>.
+                    О: CloudMax подписка нужна только при разработке (2 недели), чтобы не упираться в лимиты токенов Claude. После запуска система переходит на прямой API Anthropic с Prompt Caching для 40-50% экономии.
+                </div>
+                <div class="faq-item">
+                    <strong>В: Что такое токены Claude и почему они дорогие?</strong><br>
+                    О: Токены — это единица обработки. 1 токен ≈ 4 символа. Каждый алерт требует ~1,700 токенов (~7-8 млн/месяц). Оптимизируется через Prompt Caching (~40% экономия).
+                </div>
+                <div class="faq-item">
+                    <strong>В: Почему Render.com дешевле?</strong><br>
+                    О: PostgreSQL БД включена в плане хостинга — не нужно платить $25/месяц отдельно.
+                </div>
+                <div class="faq-item">
+                    <strong>В: Могут ли расходы расти?</strong><br>
+                    О: <strong>До лимита — нет.</strong> <span data-price="monthly"></span>/месяц включает 100-150 алертов/день. При аномальном всплеске (500+ алертов/день) превышение биллируется отдельно, но Prompt Caching защищает от этого.
+                </div>
+                <div class="faq-item">
+                    <strong>В: Можно ли оптимизировать расходы?</strong><br>
+                    О: Да, после запуска можно перейти на Claude Haiku, но мы рекомендуем начать с Sonnet для качества анализа.
                 </div>
             </div>
 
             <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 25px 0; border-radius: 4px;">
-                <h4 style="color: #2563eb; margin-bottom: 15px;">Полный контроль за вашими данными</h4>
-                <p style="margin-bottom: 12px;">Система предоставляет вам полный доступ к управлению данными о конкурентах:</p>
+                <h4 style="color: #2563eb; margin-bottom: 15px;">🎛️ Управление данными</h4>
+                <p style="margin-bottom: 12px;">Система предоставляет полный доступ к управлению данными о конкурентах:</p>
                 <ul style="margin-left: 20px; margin-bottom: 12px;">
-                    <li style="margin-bottom: 8px;"><strong>Веб-панель:</strong> Полный интерфейс для просмотра, поиска и анализа всех собранных алертов</li>
-                    <li style="margin-bottom: 8px;"><strong>Экспорт данных:</strong> Возможность выгружать данные в CSV/JSON для анализа в собственных инструментах</li>
-                    <li style="margin-bottom: 8px;"><strong>Управление мониторингом:</strong> Вы можете добавлять/удалять конкурентов, изменять источники, настраивать правила алертов</li>
-                    <li style="margin-bottom: 8px;"><strong>Резервные копии:</strong> Полный доступ к истории данных — ничего не теряется</li>
-                    <li><strong>Интеграции:</strong> При необходимости мы можем подключить дополнительные каналы (email, Telegram и т.д.)</li>
+                    <li style="margin-bottom: 8px;"><strong>Веб-панель:</strong> Просмотр, поиск и анализ всех собранных алертов</li>
+                    <li style="margin-bottom: 8px;"><strong>Экспорт данных:</strong> CSV/JSON для анализа в собственных инструментах</li>
+                    <li style="margin-bottom: 8px;"><strong>Управление мониторингом:</strong> Добавлять/удалять конкурентов, менять источники, настраивать правила</li>
+                    <li style="margin-bottom: 8px;"><strong>Резервные копии:</strong> Полная история данных — ничего не теряется</li>
+                    <li><strong>Интеграции:</strong> Email, Telegram и другие каналы по необходимости</li>
                 </ul>
-                <p style="color: #666; font-size: 0.95em;"><em>Ежемесячная поддержка (<span data-price="monthly"></span>) включает техническую помощь в управлении системой и optimизации под ваши процессы.</em></p>
-            </div>
-
-            <h2>❓ Вопросы о стоимости</h2>
-            <div class="faq">
-                <div class="faq-item">
-                    <strong>В: Почему CloudMax $100 на разработку?</strong><br>
-                    О: CloudMax подписка нужна только при разработке, чтобы не упираться в лимиты токенов Claude и уложиться в 2-недельные сроки без ограничений. <br><br>
-                    <strong>После запуска:</strong> Система переходит на Direct API Anthropic (прямой аккаунт), где включено автоматическое <strong>Prompt Caching</strong> на уровне кода. Это даёт 40–50% экономию на токенах и позволяет держать цену на уровне <span data-price="monthly"></span>/месяц.
-                </div>
-                <div class="faq-item">
-                    <strong>В: Что такое токены Claude и почему они дорогие?</strong><br>
-                    О: Токены — это единица обработки. 1 токен ≈ 4 символа. Каждый алерт требует ~1,700 токенов input/output (~7-8 млн/месяц при 100-150 алертов/день). Цена: Input $3/млн, Output $15/млн. Оптимизируется через Prompt Caching (~40% экономия). Подробно в разделе выше.
-                </div>
-                <div class="faq-item">
-                    <strong>В: Почему Render.com дешевле?</strong><br>
-                    О: Потому что PostgreSQL БД включена в плане хостинга. Не нужно платить отдельно $25/месяц за управляемую БД.
-                </div>
-                <div class="faq-item">
-                    <strong>В: Могут ли расходы расти?</strong><br>
-                    О: <strong>До определённого лимита — нет.</strong> <span data-price="monthly"></span>/месяц включает обработку алертов при нормальной активности конкурентов (100–150 алертов/день, ~7–8 млн токенов). <br><br>
-                    <strong>⚠️ Исключение:</strong> При аномальном всплеске активности (крупное событие в индустрии, новый рынок, кризис), если система обработает 500+ алертов в день, может произойти превышение лимита токенов. В этом случае дополнительные токены биллируются по факту использования (Input $3/млн, Output $15/млн).<br><br>
-                    <strong>Защита:</strong> С включённым Prompt Caching (40–50% экономия) превышение маловероятно даже при 2x росте объёма.
-                </div>
-                <div class="faq-item">
-                    <strong>В: Можно ли оптимизировать расходы?</strong><br>
-                    О: После запуска можно переойти на Claude Haiku если качество анализа будет достаточным, но мы рекомендуем начать с Sonnet.
-                </div>
-            </div>
-
-            <h2>✅ Почему эта цена справедлива</h2>
-
-            <div style="background: #f5f5f5; border-left: 4px solid #666; padding: 20px; margin: 25px 0; border-radius: 4px;">
-                <p style="margin: 0; color: #333; line-height: 1.8;">
-                    <strong>Важный момент:</strong> Это не просто <em>сбор новостей</em> (как обычный RSS-агрегатор).
-                    Это <strong>аналитическая система</strong>. Аналитик тратит 80% времени на чтение мусора из RSS лент.
-                    Наша система фильтрует, анализирует и подает готовую <strong>«выжимку»</strong> — структурированный алерт с контекстом,
-                    чем это важно и что делать.
-                </p>
-            </div>
-
-            <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; margin: 25px 0; border-radius: 4px;">
-                <h4 style="color: #16a34a; margin-bottom: 15px;">Альтернатива 1: Нанять аналитика</h4>
-                <p style="margin-bottom: 8px;">• Зарплата: $1,500-3,000/месяц</p>
-                <p style="margin-bottom: 8px;">• Постоянно занят</p>
-                <p style="margin-bottom: 8px;">• Охватывает только 1 рынок</p>
-                <p><strong>Стоимость в год: $18,000-36,000</strong></p>
-            </div>
-
-            <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; margin: 25px 0; border-radius: 4px;">
-                <h4 style="color: #16a34a; margin-bottom: 15px;">Альтернатива 2: Готовый инструмент</h4>
-                <p style="margin-bottom: 8px;">• Eikon, Factiva: $2,000-5,000/месяц</p>
-                <p style="margin-bottom: 8px;">• Переосложность для задачи</p>
-                <p style="margin-bottom: 8px;">• Долгая кривая обучения</p>
-                <p><strong>Стоимость в год: $24,000-60,000</strong></p>
-            </div>
-
-            <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 20px; margin: 25px 0; border-radius: 4px;">
-                <h4 style="color: #7f1d1d; margin-bottom: 15px;">НАШЕ РЕШЕНИЕ</h4>
-                <p style="margin-bottom: 8px;">• Месяц 1: <span data-price="month1"></span>, затем <span data-price="monthly"></span>/месяц</p>
-                <p style="margin-bottom: 8px;">• Специализировано под задачу мониторинга конкурентов</p>
-                <p style="margin-bottom: 8px;">• Работает 24/7 без перерывов</p>
-                <p style="margin-bottom: 8px;"><strong>Стоимость в год: <span data-price="year1"></span></strong></p>
-                <p><strong style="color: #dc2626;">Экономия: освобождает одного сотрудника на 5-10 часов в неделю для других задач</strong></p>
             </div>
 
         </div>
