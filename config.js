@@ -8,7 +8,8 @@
 const PRICING = {
   // ========== BASE RATES ==========
   HOURLY_RATE: 15,                    // Основная ставка в долларах
-  DEVELOPMENT_HOURS: 120,              // Часы разработки (3 недели)
+  DEVELOPMENT_HOURS: 80,               // Часы разработки MVP (3 недели) - без веб-панели
+  DEVELOPMENT_HOURS_PHASE_2: 40,       // Часы разработки Phase 2 (веб-панель)
   CLOUDMAX_MONTHLY: 100,               // CloudMax подписка (один раз)
   INFRASTRUCTURE_MONTHLY: 119,         // Ежемесячные расходы на инфраструктуру
 
@@ -33,6 +34,10 @@ const PRICING = {
     return Math.round(this.YEAR_1_TOTAL / 12);  // $277
   },
 
+  get PHASE_2_COST() {
+    return this.HOURLY_RATE * this.DEVELOPMENT_HOURS_PHASE_2;  // $600
+  },
+
   // ========== COMPONENT BREAKDOWN (в часах) ==========
   COMPONENTS: {
     slack: {
@@ -44,11 +49,6 @@ const PRICING = {
       name: 'Система мониторинга новостей',
       hours: 24,
       description: 'RSS ленты, 50+ источников, агрегация'
-    },
-    dashboard: {
-      name: 'Веб-панель',
-      hours: 40,
-      description: 'Интерфейс, поиск, анализ, исторические данные'
     },
     database: {
       name: 'Хранилище и БД (Render.com)',
@@ -64,6 +64,15 @@ const PRICING = {
       name: 'Тестирование и QA',
       hours: 12,
       description: 'Проверка компонентов, интеграция, развёртывание'
+    }
+  },
+
+  // ========== OPTIONAL PHASE 2 (Веб-панель для анализа) ==========
+  OPTIONAL_PHASE_2: {
+    dashboard: {
+      name: 'Веб-панель для просмотра и анализа',
+      hours: 40,
+      description: 'Интерфейс, поиск, анализ, исторические данные, экспорт'
     }
   },
 
@@ -171,7 +180,9 @@ function updatePrices() {
     'dev_hours': PRICING.DEVELOPMENT_HOURS,
     'avg_monthly': PRICING.formatPrice(PRICING.MONTHLY_AVERAGE),
     'mandatory_infra': PRICING.formatPrice(PRICING.MANDATORY_INFRASTRUCTURE),
-    'optional_infra': PRICING.formatPrice(PRICING.OPTIONAL_INFRASTRUCTURE)
+    'optional_infra': PRICING.formatPrice(PRICING.OPTIONAL_INFRASTRUCTURE),
+    'phase_2_cost': PRICING.formatPrice(PRICING.PHASE_2_COST),
+    'phase_2_hours': PRICING.DEVELOPMENT_HOURS_PHASE_2
   };
 
   priceElements.forEach(element => {
