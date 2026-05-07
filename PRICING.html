@@ -48,7 +48,79 @@
         .nav a { display: inline-block; margin: 0 10px; padding: 10px 20px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; }
         .nav a:hover { background: #1e40af; }
         footer { background: #1e293b; color: white; padding: 25px 40px; text-align: center; }
-        @media (max-width: 768px) { .breakdown-grid { grid-template-columns: 1fr; } header h1 { font-size: 2em; } }
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @media (max-width: 768px) {
+            .container { box-shadow: none; }
+            header { padding: 40px 20px; }
+            header h1 { font-size: 1.8em; margin-bottom: 5px; }
+            header p { font-size: 0.95em; }
+            .content { padding: 20px; }
+            h2 { font-size: 1.4em; margin: 20px 0 15px 0; padding-bottom: 8px; }
+            h3 { font-size: 1.1em; margin: 15px 0 12px 0; }
+
+            /* Цены и инвойсы */
+            .price-box { padding: 20px; margin: 20px 0; }
+            .price-line { flex-direction: column; gap: 8px; padding: 10px 0; }
+            .price-line span:first-child { font-size: 0.95em; }
+            .price-line:last-child { font-size: 1.15em; }
+
+            .invoice-box { padding: 15px; margin: 15px 0; }
+            .invoice-line { flex-direction: column; gap: 5px; padding: 6px 0; font-size: 0.9em; }
+
+            /* Таблицы: преобразование в вертикальный формат */
+            table { margin: 15px 0; font-size: 0.9em; }
+            table th { padding: 10px 8px; font-size: 0.95em; }
+            table td { padding: 10px 8px; }
+
+            /* Скрытие заголовков и показ данных как списка */
+            table thead { display: none; }
+            table tbody, table tr, table td { display: block; width: 100%; }
+            table tr { margin-bottom: 15px; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0; }
+            table td { text-align: right; padding-left: 50%; position: relative; padding: 10px; border: none; border-bottom: 1px solid #f0f0f0; }
+            table td:last-child { border-bottom: none; }
+            table td:before { content: attr(data-label); position: absolute; left: 10px; font-weight: bold; color: #2563eb; text-align: left; }
+
+            /* Грид */
+            .breakdown-grid { grid-template-columns: 1fr; gap: 15px; }
+
+            /* Навигация */
+            .nav-top { padding: 10px 15px; gap: 5px; }
+            .nav-top a { padding: 6px 12px; font-size: 0.85em; margin: 5px 2px; }
+
+            /* FAQ и прочие блоки */
+            .faq-item { padding: 12px; margin-bottom: 10px; font-size: 0.9em; }
+            .architecture { padding: 15px; margin: 20px 0; }
+            .highlight { padding: 15px; margin: 15px 0; }
+            .breakdown-box { padding: 15px; }
+            .breakdown-box h4 { font-size: 1.05em; }
+
+            footer { padding: 20px; font-size: 0.9em; }
+        }
+
+        /* МАЛЕНЬКИЕ МОБИЛЬНЫЕ (до 480px) */
+        @media (max-width: 480px) {
+            header { padding: 30px 15px; }
+            header h1 { font-size: 1.5em; }
+            header p { font-size: 0.9em; }
+            .content { padding: 15px; }
+
+            h2 { font-size: 1.25em; margin: 15px 0 12px 0; }
+            h3 { font-size: 1em; margin: 12px 0 10px 0; }
+
+            .price-box { padding: 15px; }
+            .price-line { padding: 8px 0; }
+
+            table { font-size: 0.85em; }
+            table td { padding: 8px 5px; padding-left: 45%; }
+            table td:before { left: 5px; font-size: 0.9em; }
+
+            .breakdown-box { padding: 12px; }
+            .breakdown-box h4 { font-size: 1em; margin-bottom: 10px; }
+
+            .nav-top { padding: 8px 10px; }
+            .nav-top a { padding: 5px 10px; font-size: 0.8em; }
+        }
+
         @media print { body { background: white; } .nav { display: none; } }
     </style>
     <script src="config.js"></script>
@@ -121,155 +193,171 @@
 
             <h3>Ежегодный расчет (MVP)</h3>
             <table>
-                <tr>
-                    <th style="width: 35%;">Период</th>
-                    <th style="width: 20%;">Стоимость</th>
-                    <th style="width: 45%;">Описание</th>
-                </tr>
-                <tr>
-                    <td>Месяц 1</td>
-                    <td class="amount" data-price="month1">$1,419</td>
-                    <td>Разработка + CloudMax + хостинг</td>
-                </tr>
-                <tr>
-                    <td>Месяцы 2-12</td>
-                    <td class="amount"><span data-price="monthly"></span> × 11 = <span data-price="months_2_12_cost"></span></td>
-                    <td>Хостинг и API только</td>
-                </tr>
-                <tr>
-                    <td><strong>ГОД 1 ИТОГО</strong></td>
-                    <td class="amount"><strong data-price="year1">loading...</strong></td>
-                    <td>Всё включено (без Phase 2)</td>
-                </tr>
-                <tr>
-                    <td>Среднее в месяц</td>
-                    <td class="amount" data-price="avg_monthly">loading...</td>
-                    <td>За 12 месяцев</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Период</th>
+                        <th style="width: 20%;">Стоимость</th>
+                        <th style="width: 45%;">Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Период">Месяц 1</td>
+                        <td data-label="Стоимость" class="amount" data-price="month1">$1,419</td>
+                        <td data-label="Описание">Разработка + CloudMax + хостинг</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Период">Месяцы 2-12</td>
+                        <td data-label="Стоимость" class="amount"><span data-price="monthly"></span> × 11 = <span data-price="months_2_12_cost"></span></td>
+                        <td data-label="Описание">Хостинг и API только</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Период"><strong>ГОД 1 ИТОГО</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong data-price="year1">loading...</strong></td>
+                        <td data-label="Описание">Всё включено (без Phase 2)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Период">Среднее в месяц</td>
+                        <td data-label="Стоимость" class="amount" data-price="avg_monthly">loading...</td>
+                        <td data-label="Описание">За 12 месяцев</td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2>📋 Полный разбор месяца 1 ($1,419)</h2>
 
             <h3>Разработка (80 часов × $15/час = $1,200)</h3>
             <table>
-                <tr>
-                    <th style="width: 40%;">Компонент</th>
-                    <th style="width: 15%;">Часы</th>
-                    <th style="width: 15%;">Стоимость</th>
-                    <th style="width: 30%;">Описание</th>
-                </tr>
-                <tr>
-                    <td>Интеграция Slack</td>
-                    <td class="amount">16 ч</td>
-                    <td class="amount">$240</td>
-                    <td>Бот, вебхуки, форматирование, тестирование</td>
-                </tr>
-                <tr>
-                    <td>Система мониторинга новостей</td>
-                    <td class="amount">24 ч</td>
-                    <td class="amount">$360</td>
-                    <td>RSS ленты, 50+ источников, агрегация</td>
-                </tr>
-                <tr>
-                    <td>Хранилище и БД (Render.com)</td>
-                    <td class="amount">12 ч</td>
-                    <td class="amount">$180</td>
-                    <td>PostgreSQL, схема, миграции, резервные копии</td>
-                </tr>
-                <tr>
-                    <td>Claude 3.5 Sonnet конфигурация</td>
-                    <td class="amount">16 ч</td>
-                    <td class="amount">$240</td>
-                    <td>API интеграция, промпты, анализ, рекомендации</td>
-                </tr>
-                <tr>
-                    <td>Тестирование и QA</td>
-                    <td class="amount">12 ч</td>
-                    <td class="amount">$180</td>
-                    <td>Проверка компонентов, интеграция, развёртывание</td>
-                </tr>
-                <tr style="background: #e8f2ff;">
-                    <td><strong>Разработка — итого</strong></td>
-                    <td class="amount"><strong><span data-price="dev_hours"></span> ч</strong></td>
-                    <td class="amount"><strong data-price="development">$1,200</strong></td>
-                    <td></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Компонент</th>
+                        <th style="width: 15%;">Часы</th>
+                        <th style="width: 15%;">Стоимость</th>
+                        <th style="width: 30%;">Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Компонент">Интеграция Slack</td>
+                        <td data-label="Часы" class="amount">16 ч</td>
+                        <td data-label="Стоимость" class="amount">$240</td>
+                        <td data-label="Описание">Бот, вебхуки, форматирование, тестирование</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Компонент">Система мониторинга новостей</td>
+                        <td data-label="Часы" class="amount">24 ч</td>
+                        <td data-label="Стоимость" class="amount">$360</td>
+                        <td data-label="Описание">RSS ленты, 50+ источников, агрегация</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Компонент">Хранилище и БД (Render.com)</td>
+                        <td data-label="Часы" class="amount">12 ч</td>
+                        <td data-label="Стоимость" class="amount">$180</td>
+                        <td data-label="Описание">PostgreSQL, схема, миграции, резервные копии</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Компонент">Claude 3.5 Sonnet конфигурация</td>
+                        <td data-label="Часы" class="amount">16 ч</td>
+                        <td data-label="Стоимость" class="amount">$240</td>
+                        <td data-label="Описание">API интеграция, промпты, анализ, рекомендации</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Компонент">Тестирование и QA</td>
+                        <td data-label="Часы" class="amount">12 ч</td>
+                        <td data-label="Стоимость" class="amount">$180</td>
+                        <td data-label="Описание">Проверка компонентов, интеграция, развёртывание</td>
+                    </tr>
+                    <tr style="background: #e8f2ff;">
+                        <td data-label="Компонент"><strong>Разработка — итого</strong></td>
+                        <td data-label="Часы" class="amount"><strong><span data-price="dev_hours"></span> ч</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong data-price="development">$1,200</strong></td>
+                        <td data-label="Описание"></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h3>Подписка для разработки ($100)</h3>
             <table>
-                <tr>
-                    <th style="width: 40%;">Компонент</th>
-                    <th style="width: 60%;">Описание</th>
-                </tr>
-                <tr>
-                    <td>CloudMax подписка</td>
-                    <td>Для разработки без ограничений на токены</td>
-                </tr>
-                <tr style="background: #e8f2ff;">
-                    <td><strong>РАЗВИТИЕ — итого</strong></td>
-                    <td><strong data-price="cloudmax">$100</strong></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Компонент</th>
+                        <th style="width: 60%;">Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Компонент">CloudMax подписка</td>
+                        <td data-label="Описание">Для разработки без ограничений на токены</td>
+                    </tr>
+                    <tr style="background: #e8f2ff;">
+                        <td data-label="Компонент"><strong>РАЗВИТИЕ — итого</strong></td>
+                        <td data-label="Описание"><strong data-price="cloudmax">$100</strong></td>
+                    </tr>
+                </tbody>
             </table>
 
             <h3>Инфраструктура месяца 1</h3>
             <table>
-                <tr>
-                    <th style="width: 10%;">Тип</th>
-                    <th style="width: 35%;">Компонент</th>
-                    <th style="width: 20%;">Стоимость</th>
-                    <th style="width: 35%;">Описание</th>
-                </tr>
-                <!-- ОБЯЗАТЕЛЬНЫЕ -->
-                <tr style="background: #f0fdf4;">
-                    <td style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
-                    <td><strong>Claude 3.5 Sonnet API</strong></td>
-                    <td class="amount"><strong>$100-150</strong></td>
-                    <td>100-150 алертов/день (~7-8 млн токенов/месяц с Prompt Caching). Точная стоимость зависит от объема и оптимизации</td>
-                </tr>
-                <tr style="background: #f0fdf4;">
-                    <td style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
-                    <td><strong>Render.com (Node.js + PostgreSQL)</strong></td>
-                    <td class="amount"><strong class="infra-render">$12</strong></td>
-                    <td>Серверы и база данных — обязательно для работы</td>
-                </tr>
-                <tr style="background: #f0fdf4;">
-                    <td style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
-                    <td><strong>Домен и SSL</strong></td>
-                    <td class="amount"><strong class="infra-domain">$1</strong></td>
-                    <td>Домен (~$10/год) + Let's Encrypt (бесплатно)</td>
-                </tr>
-                <tr style="background: #dcfce7; border-top: 2px solid #16a34a;">
-                    <td></td>
-                    <td><strong style="color: #16a34a;">ОБЯЗАТЕЛЬНО — ИТОГО</strong></td>
-                    <td class="amount"><strong style="color: #16a34a; font-size: 1.1em;">$113-163</strong></td>
-                    <td style="color: #16a34a;"><strong>Минимум для работы системы</strong></td>
-                </tr>
-                <!-- ОПЦИОНАЛЬНЫЕ -->
-                <tr style="background: #fef3c7;">
-                    <td style="text-align: center; color: #b45309;"><strong>⊕</strong></td>
-                    <td>RSS мониторинг</td>
-                    <td class="amount"><span class="infra-rss">$15</span> или бесплатно</td>
-                    <td>Платная служба (Feedly) или бесплатно (Feedburner, custom)</td>
-                </tr>
-                <tr style="background: #fef3c7;">
-                    <td style="text-align: center; color: #b45309;"><strong>⊕</strong></td>
-                    <td>Мониторинг & Uptime</td>
-                    <td class="amount"><span class="infra-monitoring">$15</span> или встроено</td>
-                    <td>Uptime Robot ($15) или встроенный мониторинг Render.com (включено в $12)</td>
-                </tr>
-                <tr style="background: #fef9e7; border-top: 2px solid #f59e0b;">
-                    <td></td>
-                    <td><strong style="color: #b45309;">РЕКОМЕНДУЕМЫЕ ОПЦИОНАЛЬНЫЕ</strong></td>
-                    <td class="amount"><strong style="color: #b45309; font-size: 1.1em;">+$30</strong></td>
-                    <td style="color: #b45309;"><strong>Для надежности в production</strong></td>
-                </tr>
-                <tr style="background: #fef9e7;">
-                    <td></td>
-                    <td><strong style="color: #9a6708;">ОПЦИОНАЛЬНЫЕ (минимум)</strong></td>
-                    <td class="amount"><strong style="color: #9a6708; font-size: 1.1em;">+$0</strong></td>
-                    <td style="color: #9a6708;"><strong>Если использовать бесплатные альтернативы</strong></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Тип</th>
+                        <th style="width: 35%;">Компонент</th>
+                        <th style="width: 20%;">Стоимость</th>
+                        <th style="width: 35%;">Описание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ОБЯЗАТЕЛЬНЫЕ -->
+                    <tr style="background: #f0fdf4;">
+                        <td data-label="Тип" style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
+                        <td data-label="Компонент"><strong>Claude 3.5 Sonnet API</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong>$100-150</strong></td>
+                        <td data-label="Описание">100-150 алертов/день (~7-8 млн токенов/месяц с Prompt Caching). Точная стоимость зависит от объема и оптимизации</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td data-label="Тип" style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
+                        <td data-label="Компонент"><strong>Render.com (Node.js + PostgreSQL)</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong class="infra-render">$12</strong></td>
+                        <td data-label="Описание">Серверы и база данных — обязательно для работы</td>
+                    </tr>
+                    <tr style="background: #f0fdf4;">
+                        <td data-label="Тип" style="text-align: center; color: #16a34a;"><strong>✓</strong></td>
+                        <td data-label="Компонент"><strong>Домен и SSL</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong class="infra-domain">$1</strong></td>
+                        <td data-label="Описание">Домен (~$10/год) + Let's Encrypt (бесплатно)</td>
+                    </tr>
+                    <tr style="background: #dcfce7; border-top: 2px solid #16a34a;">
+                        <td data-label="Тип"></td>
+                        <td data-label="Компонент"><strong style="color: #16a34a;">ОБЯЗАТЕЛЬНО — ИТОГО</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong style="color: #16a34a; font-size: 1.1em;">$113-163</strong></td>
+                        <td data-label="Описание" style="color: #16a34a;"><strong>Минимум для работы системы</strong></td>
+                    </tr>
+                    <!-- ОПЦИОНАЛЬНЫЕ -->
+                    <tr style="background: #fef3c7;">
+                        <td data-label="Тип" style="text-align: center; color: #b45309;"><strong>⊕</strong></td>
+                        <td data-label="Компонент">RSS мониторинг</td>
+                        <td data-label="Стоимость" class="amount"><span class="infra-rss">$15</span> или бесплатно</td>
+                        <td data-label="Описание">Платная служба (Feedly) или бесплатно (Feedburner, custom)</td>
+                    </tr>
+                    <tr style="background: #fef3c7;">
+                        <td data-label="Тип" style="text-align: center; color: #b45309;"><strong>⊕</strong></td>
+                        <td data-label="Компонент">Мониторинг & Uptime</td>
+                        <td data-label="Стоимость" class="amount"><span class="infra-monitoring">$15</span> или встроено</td>
+                        <td data-label="Описание">Uptime Robot ($15) или встроенный мониторинг Render.com (включено в $12)</td>
+                    </tr>
+                    <tr style="background: #fef9e7; border-top: 2px solid #f59e0b;">
+                        <td data-label="Тип"></td>
+                        <td data-label="Компонент"><strong style="color: #b45309;">РЕКОМЕНДУЕМЫЕ ОПЦИОНАЛЬНЫЕ</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong style="color: #b45309; font-size: 1.1em;">+$30</strong></td>
+                        <td data-label="Описание" style="color: #b45309;"><strong>Для надежности в production</strong></td>
+                    </tr>
+                    <tr style="background: #fef9e7;">
+                        <td data-label="Тип"></td>
+                        <td data-label="Компонент"><strong style="color: #9a6708;">ОПЦИОНАЛЬНЫЕ (минимум)</strong></td>
+                        <td data-label="Стоимость" class="amount"><strong style="color: #9a6708; font-size: 1.1em;">+$0</strong></td>
+                        <td data-label="Описание" style="color: #9a6708;"><strong>Если использовать бесплатные альтернативы</strong></td>
+                    </tr>
+                </tbody>
             </table>
 
             <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin-top: 25px; border-radius: 4px;">
@@ -288,26 +376,30 @@
 
             <h3 style="margin-top: 30px; padding-top: 30px; border-top: 3px solid #2563eb;">Итог месяца 1</h3>
             <table>
-                <tr>
-                    <th style="width: 50%;">Раздел</th>
-                    <th style="width: 50%;">Стоимость</th>
-                </tr>
-                <tr>
-                    <td>Разработка (<span data-price="dev_hours"></span> часов)</td>
-                    <td class="amount" data-price="development">$1,200</td>
-                </tr>
-                <tr>
-                    <td>CloudMax подписка</td>
-                    <td class="amount" data-price="cloudmax">$100</td>
-                </tr>
-                <tr>
-                    <td>Инфраструктура</td>
-                    <td class="amount" data-price="monthly"></td>
-                </tr>
-                <tr style="background: #f0fdf4; font-weight: bold;">
-                    <td>МЕСЯЦ 1 ПОЛНАЯ СТОИМОСТЬ</td>
-                    <td class="amount" style="font-size: 1.2em; color: #16a34a;" data-price="month1">$1,419</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Раздел</th>
+                        <th style="width: 50%;">Стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Раздел">Разработка (<span data-price="dev_hours"></span> часов)</td>
+                        <td data-label="Стоимость" class="amount" data-price="development">$1,200</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Раздел">CloudMax подписка</td>
+                        <td data-label="Стоимость" class="amount" data-price="cloudmax">$100</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Раздел">Инфраструктура</td>
+                        <td data-label="Стоимость" class="amount" data-price="monthly"></td>
+                    </tr>
+                    <tr style="background: #f0fdf4; font-weight: bold;">
+                        <td data-label="Раздел">МЕСЯЦ 1 ПОЛНАЯ СТОИМОСТЬ</td>
+                        <td data-label="Стоимость" class="amount" style="font-size: 1.2em; color: #16a34a;" data-price="month1">$1,419</td>
+                    </tr>
+                </tbody>
             </table>
 
             <h2>🔧 Архитектура и инфраструктура</h2>
@@ -625,36 +717,40 @@
 
                 <h4 style="color: #b45309; margin-top: 20px; margin-bottom: 10px;">💰 Итого дополнительные расходы разработчика:</h4>
                 <table style="width: 100%; border-collapse: collapse;">
-                    <tr style="background: #fff8e1;">
-                        <td style="padding: 12px; border: 1px solid #f59e0b;"><strong>Категория</strong></td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong>Часов в месяц</strong></td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong>Стоимость (@ $50/ч)</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #f59e0b;">Исправления RSS / парсинга</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">1-2 ч</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$50-100</td>
-                    </tr>
-                    <tr style="background: #fef3c7;">
-                        <td style="padding: 12px; border: 1px solid #f59e0b;">Оптимизация Claude анализа</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">2-4 ч</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$100-200</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #f59e0b;">Запросы на новые функции</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">2-4 ч</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$100-200</td>
-                    </tr>
-                    <tr style="background: #fef3c7;">
-                        <td style="padding: 12px; border: 1px solid #f59e0b;">Обновления и оптимизация</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">1-2 ч</td>
-                        <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$50-100</td>
-                    </tr>
-                    <tr style="background: #fff0e6; font-weight: bold;">
-                        <td style="padding: 12px; border: 2px solid #f59e0b;"><strong>ИТОГО В МЕСЯЦ</strong></td>
-                        <td style="padding: 12px; border: 2px solid #f59e0b; text-align: right;"><strong>6-12 часов</strong></td>
-                        <td style="padding: 12px; border: 2px solid #f59e0b; text-align: right;"><strong>$300-600</strong></td>
-                    </tr>
+                    <thead>
+                        <tr style="background: #fff8e1;">
+                            <td style="padding: 12px; border: 1px solid #f59e0b;"><strong>Категория</strong></td>
+                            <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong>Часов в месяц</strong></td>
+                            <td style="padding: 12px; border: 1px solid #f59e0b; text-align: right;"><strong>Стоимость (@ $50/ч)</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Категория" style="padding: 12px; border: 1px solid #f59e0b;">Исправления RSS / парсинга</td>
+                            <td data-label="Часов в месяц" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">1-2 ч</td>
+                            <td data-label="Стоимость" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$50-100</td>
+                        </tr>
+                        <tr style="background: #fef3c7;">
+                            <td data-label="Категория" style="padding: 12px; border: 1px solid #f59e0b;">Оптимизация Claude анализа</td>
+                            <td data-label="Часов в месяц" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">2-4 ч</td>
+                            <td data-label="Стоимость" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$100-200</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Категория" style="padding: 12px; border: 1px solid #f59e0b;">Запросы на новые функции</td>
+                            <td data-label="Часов в месяц" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">2-4 ч</td>
+                            <td data-label="Стоимость" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$100-200</td>
+                        </tr>
+                        <tr style="background: #fef3c7;">
+                            <td data-label="Категория" style="padding: 12px; border: 1px solid #f59e0b;">Обновления и оптимизация</td>
+                            <td data-label="Часов в месяц" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">1-2 ч</td>
+                            <td data-label="Стоимость" style="padding: 12px; border: 1px solid #f59e0b; text-align: right;">$50-100</td>
+                        </tr>
+                        <tr style="background: #fff0e6; font-weight: bold;">
+                            <td data-label="Категория" style="padding: 12px; border: 2px solid #f59e0b;"><strong>ИТОГО В МЕСЯЦ</strong></td>
+                            <td data-label="Часов в месяц" style="padding: 12px; border: 2px solid #f59e0b; text-align: right;"><strong>6-12 часов</strong></td>
+                            <td data-label="Стоимость" style="padding: 12px; border: 2px solid #f59e0b; text-align: right;"><strong>$300-600</strong></td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <p style="margin-top: 20px; color: #666; font-size: 0.95em;"><strong>Вывод:</strong> Реальная стоимость владения системой = <span data-price="monthly"></span> (инфраструктура) + $300-600 (ваш труд на поддержку). Это нормально для любой живой системы.</p>
